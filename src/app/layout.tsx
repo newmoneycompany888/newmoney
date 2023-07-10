@@ -2,8 +2,9 @@ import { Noto_Sans_Thai } from 'next/font/google'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
+import { App } from './App'
+
 import './globals.css'
-import Theme from './theme'
 
 const fonts = Noto_Sans_Thai({ subsets: ['latin'], display: 'swap', fallback: ['sans-serif'], adjustFontFallback: true })
 
@@ -62,7 +63,7 @@ const RootLayout = ({ children }: IRootLayoutParams) => {
     <html lang="th">
       <body className={fonts.className}>
         <div id="__next">
-          <Theme>{children}</Theme>
+          <App />
         </div>
       </body>
     </html>
