@@ -16,3 +16,9 @@
     @apply w-full h-full !min-h-full  p-0 m-0;
   }
 }
+
+@layer utilities {
+  .required {
+    @apply after:content-['*'] after:text-red-500;
+  }
+}

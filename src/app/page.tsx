@@ -1,13 +1,11 @@
-import Image from 'next/image'
-
-import { ApplyLoad } from '@/components'
+import { ApplyLoan } from '@/components'
 
 const Home = () => {
   return (
     <main className="bg-white py-12">
       <section className="bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <ApplyLoad />
+          <ApplyLoan />
         </div>
       </section>
     </main>
