@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
 import './globals.css'
+import Theme from './theme'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -59,7 +60,9 @@ interface IRootLayoutParams {
 const RootLayout = ({ children }: IRootLayoutParams) => {
   return (
     <html lang="th">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Theme>{children}</Theme>
+      </body>
     </html>
   )
 }
