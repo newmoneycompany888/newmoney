@@ -11,7 +11,7 @@ const flowbiteTheme: CustomFlowbiteTheme = {
   navbar: {
     root: {
       inner: {
-        base: 'container h-12 flex items-center justify-between gap-x-4 mx-auto',
+        base: 'container h-12 flex items-center justify-between gap-x-0.5 mx-auto',
       },
     },
     collapse: {
@@ -22,7 +22,7 @@ const flowbiteTheme: CustomFlowbiteTheme = {
       base: 'block rounded py-2 px-4',
       active: {
         on: 'bg-primary text-white',
-        off: 'bg-transparent hover:bg-primary text-primary hover:text-white',
+        off: 'bg-transparent hover:bg-primary text-primary dark:text-white hover:text-white',
       },
     },
   },

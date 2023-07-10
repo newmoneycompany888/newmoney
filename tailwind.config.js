@@ -1,3 +1,4 @@
+const colors = require('tailwindcss/colors')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -11,17 +12,8 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#5D2E8A',
-          50: '#f0e6f3',
-          100: '#dbc0e4',
-          200: '#c498d2',
-          300: '#ad71c0',
-          400: '#9c55b2',
-          500: '#8b3ea4',
-          600: '#7e399d',
-          700: '#6d3394',
-          800: '#5e2e8a',
-          900: '#422577',
+          DEFAULT: colors.violet[800],
+          ...colors.violet,
         },
         secondary: {
           DEFAULT: '#FBD11B',
