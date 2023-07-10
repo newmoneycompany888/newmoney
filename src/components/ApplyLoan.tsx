@@ -211,6 +211,7 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
             placeholder="ที่อยู่ปัจจุบัน"
             helperText={errors.address?.message}
             rows={3}
+            className="text-sm"
           />
         </div>
         <div className="space-y-1">
