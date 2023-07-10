@@ -1,7 +1,7 @@
 'use client'
 
 import { FC } from 'react'
-import { Button, Card, Checkbox, HelperText, Label, Select, TextInput, Textarea } from 'flowbite-react'
+import { Button, Card, Checkbox, FileInput, HelperText, Label, Select, TextInput, Textarea } from 'flowbite-react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -19,6 +19,7 @@ interface IApplyLoanFormValues {
   period: string
   address: string
   isAccept: boolean
+  file: string | null
 }
 
 const validateSchema = yup.object().shape({
@@ -30,8 +31,9 @@ const validateSchema = yup.object().shape({
   identityID: yup.string().required('กรุณาระบุหมายเลขบัตรประชาชน'),
   desiredAmount: yup.string().required('กรุณาระบุจำนวนเงินที่ต้องการ'),
   period: yup.string().required('กรุณาระบุระยะเวลา'),
-  address: yup.string(),
+  address: yup.string().nullable(),
   isAccept: yup.bool().oneOf([true], 'กรุณายินยอมข้อมูลข้างต้น'),
+  file: yup.string().nullable(),
 })
 
 const businessTypeList = ['ร้านขายยา']
@@ -54,6 +56,7 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
       period: '',
       address: '',
       isAccept: false,
+      file: null,
     },
   })
 
@@ -208,6 +211,21 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
             placeholder="ที่อยู่ปัจจุบัน"
             helperText={errors.address?.message}
             rows={3}
+          />
+        </div>
+        <div className="space-y-1">
+          <Label
+            htmlFor="apply-loan-address"
+            value="อัพโหลดไฟล์บัตรประชาชน"
+            color={errors.address ? 'failure' : undefined}
+            className="dark:text-gray-300 text-sm font-medium"
+          />
+          <FileInput
+            {...register('file')}
+            id="apply-loan-file"
+            color={errors.file ? 'failure' : undefined}
+            placeholder="เลือกไฟล์บัตรประชาชน"
+            helperText={errors.file?.message}
           />
         </div>
         <div className="col-span-full">
