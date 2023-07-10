@@ -1,11 +1,11 @@
-import { Inter } from 'next/font/google'
+import { Noto_Sans_Thai } from 'next/font/google'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
 import './globals.css'
 import Theme from './theme'
 
-const inter = Inter({ subsets: ['latin'] })
+const fonts = Noto_Sans_Thai({ subsets: ['latin'], display: 'swap', fallback: ['sans-serif'], adjustFontFallback: true })
 
 export async function generateMetadata(): Promise<Metadata> {
   const title = 'New Money - Loan for Business'
@@ -60,8 +60,10 @@ interface IRootLayoutParams {
 const RootLayout = ({ children }: IRootLayoutParams) => {
   return (
     <html lang="th">
-      <body className={inter.className}>
-        <Theme>{children}</Theme>
+      <body className={fonts.className}>
+        <div id="__next">
+          <Theme>{children}</Theme>
+        </div>
       </body>
     </html>
   )
