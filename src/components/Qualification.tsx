@@ -1,0 +1,57 @@
+import { FC } from 'react'
+import { DocumentCheckIcon, ShieldCheckIcon } from '@heroicons/react/24/outline'
+
+interface IQualificationProps {}
+
+const QUANTICATIONS = [
+  'เป็นเจ้าของธุรกิจ หรือ ผู้ประกอบการ',
+  'มีที่พักอาศัยที่สามารถตรวจสอบได้ในพื้นที่ กรุงเทพฯ และใกล้เคียง',
+  'มีหน้างาน ออฟฟิศ โรงงาน หรือ บริษัทที่สามารถตรวจสอบได้',
+  'ธุรกิจมีการจดทะเบียน บจก. หจก. หรือ จดทะเบียนพาณิชย์',
+]
+
+const DOCUMENTS = [
+  'สำเนาประจำตัวบัตรประชาชน/สำเนาทะเบียนบ้าน',
+  'สำเนาทะเบียนการค้า/ทะเบียนพาณิชย์/ใบจดทะเบียนประกอบการ',
+  'สำเนาเอกสารแสดงรายได้ของกิจการ เช่น Statement , บิลเงินสด , หนังสือรับรองการหักภาษี ณ ที่จ่ายเป็นต้น',
+  'รูปถ่ายที่พักอาศัยและสถานที่ประกอบธุรกิจหรือกิจการของลูกค้า',
+]
+
+export const Qualification: FC<IQualificationProps> = () => {
+  return (
+    <div className="grid md:col-span-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
+      <img
+        src="/images/portrait-beautiful-young-asian-woman-smiles-with-action-yellow-wall.webp"
+        alt="portrait-beautiful-young-asian-woman-smiles-with-action-yellow-wall"
+        className="h-full object-cover rounded"
+      />
+
+      <div className="lg:col-span-2 space-y-6">
+        <div>
+          <h3 className="text-primary dark:text-white text-xl sm:text-2xl lg:text-3xl font-bold text-center md:text-left">คุณสมบัติของผู้ยื่นกู้สินเชื่อ</h3>
+          <hr className="border-t border-t-gray-300 dark:border-t-gray-200 mt-4 mb-5" />
+          <ul className="space-y-2 md:space-y-4">
+            {QUANTICATIONS.map((quantication, index) => (
+              <li key={`quantication-${index}`} className="flex items-center space-x-2">
+                <ShieldCheckIcon className="shrink w-6 h-6 text-secondary-800 dark:text-secondary font-bold" />
+                <span className="flex-1 text-sm sm:text-base text-gray-900 dark:text-white font-medium">{quantication}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-primary dark:text-white text-xl sm:text-2xl lg:text-3xl font-bold text-center md:text-left">เอกสารสำหรับยื่นกู้สินเชื่อ</h3>
+          <hr className="border-t border-t-gray-300 dark:border-t-gray-200 mt-4 mb-5" />
+          <ul className="space-y-2 md:space-y-4">
+            {DOCUMENTS.map((document, index) => (
+              <li key={`document-${index}`} className="flex items-center space-x-2">
+                <DocumentCheckIcon className="shrink w-6 h-6 text-secondary-800 dark:text-secondary font-bold" />
+                <span className="flex-1 text-sm sm:text-base text-gray-900 dark:text-white font-medium">{document}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  )
+}
