@@ -63,7 +63,7 @@ const RootLayout = ({ children }: IRootLayoutParams) => {
     <html lang="th">
       <body className={fonts.className}>
         <div id="__next">
-          <App />
+          <App>{children}</App>
         </div>
       </body>
     </html>

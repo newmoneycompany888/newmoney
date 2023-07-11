@@ -1,25 +1,19 @@
 'use client'
 
-import { FC } from 'react'
+import { useTransition, type FC } from 'react'
 import { Button, Card, Checkbox, FileInput, HelperText, Label, Select, TextInput, Textarea } from 'flowbite-react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import { jsonToFormData } from '@/utils'
+
+import { IApplyLoanValues, applyLoan } from '@/app/actions'
 
 interface IApplyLoanProps {}
 
-interface IApplyLoanFormValues {
-  businessName: string
-  businessType: string
-  contactName: string
-  contactPhone: string
-  email: string
-  identityID: string
-  desiredAmount: string
-  period: string
-  address: string
+export interface IApplyLoanFormValues extends Omit<IApplyLoanValues, 'file'> {
   isAccept: boolean
-  file: string | null
+  file: FileList | null
 }
 
 const validateSchema = yup.object().shape({
@@ -33,12 +27,14 @@ const validateSchema = yup.object().shape({
   period: yup.string().required('กรุณาระบุระยะเวลา'),
   address: yup.string().nullable(),
   isAccept: yup.bool().oneOf([true], 'กรุณายินยอมข้อมูลข้างต้น'),
-  file: yup.string().nullable(),
+  file: yup.mixed<FileList>().nullable(),
 })
 
 const businessTypeList = ['ร้านขายยา']
 
 export const ApplyLoan: FC<IApplyLoanProps> = () => {
+  const [isPending, startTransition] = useTransition()
+
   const {
     register,
     handleSubmit,
@@ -46,14 +42,14 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
   } = useForm<IApplyLoanFormValues>({
     resolver: yupResolver(validateSchema),
     defaultValues: {
-      businessName: '',
-      businessType: '',
-      contactName: '',
-      contactPhone: '',
-      email: '',
-      identityID: '',
-      desiredAmount: '',
-      period: '',
+      businessName: 'บริษัท บีเทค ซอฟต์ จำกัด',
+      businessType: 'ร้านขายยา',
+      contactName: ' กิตติศักดิ์ มณีวงษ์',
+      contactPhone: '0801500531',
+      email: 'gittisak@pirsquare.net',
+      identityID: '1938492039482',
+      desiredAmount: '100000',
+      period: '180',
       address: '',
       isAccept: false,
       file: null,
@@ -61,7 +57,19 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
   })
 
   const handleSubmitApplyLoan = (data: IApplyLoanFormValues) => {
-    console.log('data', data)
+    const { file, isAccept, ...restData } = data
+
+    if (isAccept) {
+      const formData = jsonToFormData(restData)
+
+      if (file) {
+        formData.append('file', file[0])
+      }
+
+      startTransition(() => {
+        applyLoan(formData)
+      })
+    }
   }
 
   return (
@@ -243,7 +251,7 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
             </div>
           </div>
         </div>
-        <Button type="submit" className="col-span-full">
+        <Button type="submit" isProcessing={isPending} className="col-span-full">
           ส่งข้อมูล
         </Button>
       </form>
