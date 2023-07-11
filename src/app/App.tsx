@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import React, { PropsWithChildren, useMemo } from 'react'
+import React, { PropsWithChildren, useEffect, useMemo, useState } from 'react'
 
 import { DarkThemeToggle, Navbar } from 'flowbite-react'
 import Theme from './theme'
@@ -18,6 +18,22 @@ export function App(props: PropsWithChildren<AppProps>) {
   const { children } = props
 
   const router = useRouter()
+
+  const [scrollY, setScrollY] = useState<number>(0)
+
+  useEffect(() => {
+    handleScroll()
+    //add eventlistener to window
+    window.addEventListener('scroll', handleScroll)
+    // remove event on unmount to prevent a memory leak with the cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY)
+  }
 
   const contactUs = useMemo(
     () => [
@@ -58,8 +74,12 @@ export function App(props: PropsWithChildren<AppProps>) {
 
   return (
     <Theme>
-      <div className="relative w-full grid grid-rows-1fr-auto pt-26">
-        <header className="w-full fixed top-0 left-0 right-0 z-999 bg-primary-900 dark:bg-primary">
+      <div className="relative w-full h-full grid grid-rows-1fr-auto pt-26">
+        <header
+          className={`w-full fixed top-0 left-0 right-0 z-999 bg-primary-900 dark:bg-primary transition-transform ${
+            scrollY > 36 ? '-translate-y-9' : 'translate-y-0'
+          }`}
+        >
           <div className="w-full max-w-5xl lg:max-w-6xl 2xl:max-w-7xl h-9 flex justify-end items-center gap-x-1.5 text-base font-normal leading-6 text-white px-2.5 mx-auto">
             สอบถามเพิ่มเติม โทร.
             <a className="hover:underline" href="tel:0983456489">
@@ -83,7 +103,7 @@ export function App(props: PropsWithChildren<AppProps>) {
           </Navbar>
         </header>
         {children}
-        <footer className="relative w-full bg-footer bg-no-repeat bg-cover">
+        <footer className="relative w-full bg-footer bg-no-repeat bg-cover bg-center">
           <div className="bg-primary-900/30 dark:bg-primary/30 pt-7.5 pb-5">
             <div className="container px-2 sm:px-4 mx-auto">
               <section className="flex flex-row flex-wrap justify-between gap-x-6 gap-y-2">

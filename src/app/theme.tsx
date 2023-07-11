@@ -23,7 +23,7 @@ const flowbiteTheme: CustomFlowbiteTheme = {
       base: 'block rounded py-2 px-4',
       active: {
         on: 'bg-primary text-white',
-        off: 'bg-transparent hover:bg-primary text-primary dark:text-white hover:text-white',
+        off: 'bg-transparent hover:bg-primary text-gray-900 dark:text-white hover:text-white',
       },
     },
   },
