@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { DocumentCheckIcon, ShieldCheckIcon } from '@heroicons/react/24/outline'
+import { HiOutlineDocumentCheck, HiOutlineShieldCheck } from 'react-icons/hi2'
 
 interface IQualificationProps {}
 
@@ -33,7 +33,7 @@ export const Qualification: FC<IQualificationProps> = () => {
           <ul className="space-y-2 md:space-y-4">
             {QUANTICATIONS.map((quantication, index) => (
               <li key={`quantication-${index}`} className="flex items-center space-x-2">
-                <ShieldCheckIcon className="shrink w-6 h-6 text-secondary-800 dark:text-secondary font-bold" />
+                <HiOutlineShieldCheck className="shrink w-6 h-6 text-secondary-800 dark:text-secondary font-bold" />
                 <span className="flex-1 text-sm sm:text-base text-gray-900 dark:text-white font-medium">{quantication}</span>
               </li>
             ))}
@@ -45,7 +45,7 @@ export const Qualification: FC<IQualificationProps> = () => {
           <ul className="space-y-2 md:space-y-4">
             {DOCUMENTS.map((document, index) => (
               <li key={`document-${index}`} className="flex items-center space-x-2">
-                <DocumentCheckIcon className="shrink w-6 h-6 text-secondary-800 dark:text-secondary font-bold" />
+                <HiOutlineDocumentCheck className="shrink w-6 h-6 text-secondary-800 dark:text-secondary font-bold" />
                 <span className="flex-1 text-sm sm:text-base text-gray-900 dark:text-white font-medium">{document}</span>
               </li>
             ))}

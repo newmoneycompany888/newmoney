@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { toast } from 'react-hot-toast'
-import { CheckIcon } from '@heroicons/react/24/outline'
+import { HiOutlineCheck } from 'react-icons/hi'
 
 import { jsonToFormData } from '@/utils'
 
@@ -76,7 +76,7 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
               (message) => (
                 <Toast>
                   <div className="inline-flex shrink-0 justify-center items-center h-8 w-8 bg-green-100 dark:bg-green-800 rounded-lg text-green-500  dark:text-green-200 mr-2">
-                    <CheckIcon className="h-5 w-5" />
+                    <HiOutlineCheck className="h-5 w-5" />
                   </div>
                   <span>สมัครสินเชื่อสำเร็จ</span>
                   <Toast.Toggle onClick={() => toast.dismiss(message.id)} />
