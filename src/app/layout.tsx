@@ -1,6 +1,7 @@
 import { Noto_Sans_Thai } from 'next/font/google'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import { Toaster } from 'react-hot-toast'
 
 import { App } from './App'
 
@@ -64,6 +65,7 @@ const RootLayout = ({ children }: IRootLayoutParams) => {
       <body className={fonts.className}>
         <div id="__next">
           <App>{children}</App>
+          <Toaster />
         </div>
       </body>
     </html>

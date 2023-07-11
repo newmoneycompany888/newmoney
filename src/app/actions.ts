@@ -52,6 +52,7 @@ export const applyLoan = async (formData: FormData) => {
       attachments: attachment ? [attachment] : [],
     })
   } catch (error) {
-    console.error('error applyLoan', error)
+    console.error('error applyLoanAction', error)
+    throw error
   }
 }

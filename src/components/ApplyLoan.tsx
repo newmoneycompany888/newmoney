@@ -1,10 +1,13 @@
 'use client'
 
 import { useTransition, type FC } from 'react'
-import { Button, Card, Checkbox, FileInput, HelperText, Label, Select, TextInput, Textarea } from 'flowbite-react'
+import { Button, Card, Checkbox, FileInput, HelperText, Label, Select, TextInput, Textarea, Toast } from 'flowbite-react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import { toast } from 'react-hot-toast'
+import { CheckIcon } from '@heroicons/react/24/outline'
+
 import { jsonToFormData } from '@/utils'
 
 import { IApplyLoanValues, applyLoan } from '@/app/actions'
@@ -68,6 +71,23 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
 
       startTransition(() => {
         applyLoan(formData)
+          .then(() => {
+            toast.custom(
+              (message) => (
+                <Toast>
+                  <div className="inline-flex shrink-0 justify-center items-center h-8 w-8 bg-green-100 dark:bg-green-800 rounded-lg text-green-500  dark:text-green-200 mr-2">
+                    <CheckIcon className="h-5 w-5" />
+                  </div>
+                  <span>สมัครสินเชื่อสำเร็จ</span>
+                  <Toast.Toggle onClick={() => toast.dismiss(message.id)} />
+                </Toast>
+              ),
+              { duration: 3000 }
+            )
+          })
+          .catch((error) => {
+            console.error('error applyLoan', error)
+          })
       })
     }
   }
