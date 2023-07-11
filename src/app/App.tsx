@@ -1,10 +1,14 @@
 'use client'
+import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, useMemo } from 'react'
 
 import { DarkThemeToggle, Navbar } from 'flowbite-react'
 import Theme from './theme'
+
+import { FiPhoneCall, FiMail } from 'react-icons/fi'
+import { HiOutlineLocationMarker } from 'react-icons/hi'
 
 import { ROUTES } from '@/constants'
 
@@ -15,32 +19,103 @@ export function App(props: PropsWithChildren<AppProps>) {
 
   const router = useRouter()
 
+  const contactUs = useMemo(
+    () => [
+      {
+        icon: <FiPhoneCall size={24} />,
+        label: '098-3456489',
+        href: 'tel:0983456489',
+      },
+      {
+        icon: <FiMail size={24} />,
+        label: 'newmoneycompany888@gmail.com',
+        href: 'mailto:newmoneycompany888@gmail.com',
+      },
+      {
+        icon: (
+          <svg width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <g>
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path
+                fill="currentColor"
+                fillRule="nonzero"
+                d="M22 10.69c0 1.787-.687 3.4-2.123 4.974-2.1 2.414-6.788 5.363-7.864 5.812-1.074.451-.911-.287-.874-.537l.137-.85c.034-.262.068-.65-.032-.9-.112-.277-.556-.424-.881-.492C5.558 18.059 2 14.7 2 10.69c0-4.475 4.487-8.118 10-8.118 5.512 0 10 3.643 10 8.118zm-3.6 3.625c1.113-1.22 1.6-2.361 1.6-3.625 0-3.268-3.51-6.118-8-6.118s-8 2.85-8 6.118c0 2.905 2.728 5.507 6.626 6.024l.147.026c1.078.226 1.884.614 2.329 1.708l.036.096c1.806-1.176 4.174-2.98 5.261-4.229zm-.262-4a.526.526 0 0 1 0 1.05h-1.463v.938h1.462a.525.525 0 1 1 0 1.049H16.15a.526.526 0 0 1-.522-.524V8.852c0-.287.235-.525.525-.525h1.988a.525.525 0 0 1-.003 1.05h-1.462v.938h1.462zm-3.213 2.513a.524.524 0 0 1-.526.522.515.515 0 0 1-.425-.208l-2.036-2.764v2.45a.525.525 0 0 1-1.047 0V8.852a.522.522 0 0 1 .52-.523c.162 0 .312.086.412.211l2.052 2.775V8.852c0-.287.235-.525.525-.525.287 0 .525.238.525.525v3.976zm-4.784 0a.527.527 0 0 1-.526.524.526.526 0 0 1-.523-.524V8.852c0-.287.236-.525.525-.525.289 0 .524.238.524.525v3.976zm-2.055.524H6.097a.528.528 0 0 1-.525-.524V8.852a.527.527 0 0 1 1.05 0v3.45h1.464a.525.525 0 0 1 0 1.05z"
+              />
+            </g>
+          </svg>
+        ),
+        label: 'ไลน์ไอดี @273axokg',
+        href: 'https://page.line.me/273axokg',
+      },
+      {
+        icon: <HiOutlineLocationMarker size={24} />,
+        label: '16/65 ม.2 บางบอน 3 บางบอน กทม 10150',
+        href: '#',
+      },
+    ],
+    []
+  )
+
   return (
     <Theme>
-      <header className="bg-secondary">
-        <div className="w-full max-w-5xl lg:max-w-6xl 2xl:max-w-7xl h-9 flex justify-end items-center gap-x-1.5 text-base font-normal leading-6 px-2.5 mx-auto">
-          สอบถามเพิ่มเติม โทร.
-          <a className="hover:underline" href="tel:0983456489">
-            098-3456489
-          </a>
-        </div>
-        <Navbar fluid>
-          <Navbar.Brand href={ROUTES.HOME}>
-            <Image alt="New Money Logo" width={48} height={48} className="w-10 lg:w-12 h-10 lg:h-12 mr-2 lg:mr-3" src="/logo.png" />
-            <span className="self-center whitespace-nowrap text-base lg:text-xl font-semibold dark:text-white ">New Money</span>
-          </Navbar.Brand>
-          <Navbar.Toggle className="ml-auto" />
-          <Navbar.Collapse className="ml-auto">
-            <Navbar.Link href="#">บริการของเรา</Navbar.Link>
-            <Navbar.Link href="#">ขั้นตอนการยื่นกู้</Navbar.Link>
-            <Navbar.Link href="#">คุณสมบัติของผู้กู้</Navbar.Link>
-            <Navbar.Link href="#">บทความน่ารู้</Navbar.Link>
-            <Navbar.Link href="#">ติดต่อเรา</Navbar.Link>
-          </Navbar.Collapse>
-          <DarkThemeToggle />
-        </Navbar>
-      </header>
-      {children}
+      <div className="relative w-full grid grid-rows-1fr-auto pt-26">
+        <header className="w-full fixed top-0 left-0 right-0 z-999 bg-primary-900 dark:bg-primary">
+          <div className="w-full max-w-5xl lg:max-w-6xl 2xl:max-w-7xl h-9 flex justify-end items-center gap-x-1.5 text-base font-normal leading-6 text-white px-2.5 mx-auto">
+            สอบถามเพิ่มเติม โทร.
+            <a className="hover:underline" href="tel:0983456489">
+              098-3456489
+            </a>
+          </div>
+          <Navbar fluid>
+            <Navbar.Brand href={ROUTES.HOME}>
+              <Image alt="New Money Logo" width={48} height={48} className="w-10 lg:w-12 h-10 lg:h-12 mr-2 lg:mr-3" src="/logo.png" />
+              <span className="self-center whitespace-nowrap text-base lg:text-xl font-semibold dark:text-white ">New Money</span>
+            </Navbar.Brand>
+            <Navbar.Toggle className="ml-auto" />
+            <Navbar.Collapse className="ml-auto">
+              <Navbar.Link href="#">บริการของเรา</Navbar.Link>
+              <Navbar.Link href="#">ขั้นตอนการยื่นกู้</Navbar.Link>
+              <Navbar.Link href="#">คุณสมบัติของผู้กู้</Navbar.Link>
+              <Navbar.Link href="#">บทความน่ารู้</Navbar.Link>
+              <Navbar.Link href="#">ติดต่อเรา</Navbar.Link>
+            </Navbar.Collapse>
+            <DarkThemeToggle />
+          </Navbar>
+        </header>
+        {children}
+        <footer className="relative w-full bg-footer bg-no-repeat bg-cover">
+          <div className="bg-primary-900/30 dark:bg-primary/30 pt-7.5 pb-5">
+            <div className="container px-2 sm:px-4 mx-auto">
+              <section className="flex flex-row flex-wrap justify-between gap-x-6 gap-y-2">
+                <article className="w-full max-w-89 py-2.5">
+                  <Link className="text-2xl font-semibold leading-8 text-white" href={ROUTES.HOME}>
+                    New Money
+                  </Link>
+                  <hr className="w-28 h-0.5 bg-white my-2.5" />
+                  <p className="text-base font-normal leading-6 text-white">
+                    บริการสินเชื่อธุรกิจ เงินกู้เร่งด่วน เงินด่วนเสริมสภาพคล่องธุรกิจ กู้ง่าย ฟรีประเมิณ วงเงินไม่เกิน 5 ล้านบาท
+                  </p>
+                </article>
+                <article className="flex flex-wrap gap-6 py-2.5 lg:ml-auto">
+                  <div className="min-w-89 flex flex-col gap-y-2">
+                    <h5 className="text-xl font-semibold leading-7 text-white mb-3.5">ติดต่อเรา</h5>
+                    {contactUs.map((contact, index) => (
+                      <a key={`footer-contact-${index}`} className="flex items-center gap-x-2" href={contact.href} target="_blank">
+                        <span className="text-secondary">{contact.icon}</span>
+                        <span className="text-base font-normal leading-6 text-white">{contact.label}</span>
+                      </a>
+                    ))}
+                  </div>
+                  <Image src={'/images/M_273axokg_GW.png'} width={178} height={178} alt={'line qr code'} />
+                </article>
+              </section>
+              <section className="w-full border-t text-center mt-7.5 pt-1">
+                <span className="text-sm font-light leading-5 text-white">Copyright © 2023 New Money | Loan for Business. All rights reserved.</span>
+              </section>
+            </div>
+          </div>
+        </footer>
+      </div>
     </Theme>
   )
 }

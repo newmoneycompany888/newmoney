@@ -29,6 +29,47 @@ module.exports = {
           900: '#f67600',
         },
       },
+      spacing: {
+        7.5: '1.875rem',
+        26: '6.5rem',
+      },
+      minWidth: {
+        80: '20rem',
+        89: '22.25rem',
+      },
+      maxWidth: {
+        80: '20rem',
+        89: '22.25rem',
+      },
+      typography: {
+        lg: {
+          css: {
+            h1: {
+              'font-size': '38px',
+              'line-height': '40px',
+            },
+            h2: {
+              'font-size': '30px',
+              'line-height': '36px',
+            },
+          },
+        },
+      },
+      gridTemplateRows: {
+        '1fr-auto': '1fr auto',
+      },
+      gridTemplateColumns: {
+        '1fr-auto-auto': '1fr auto auto',
+      },
+      boxShadow: {
+        navbar: '0px 2px 15px rgba(0, 0, 0, 0.1)',
+      },
+      backgroundImage: {
+        footer: 'url(/backgrounds/bg-footer.jpeg)',
+      },
+      zIndex: {
+        999: 999,
+      },
     },
   },
   corePlugins: {

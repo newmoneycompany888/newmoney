@@ -10,6 +10,7 @@ const flowbiteTheme: CustomFlowbiteTheme = {
   },
   navbar: {
     root: {
+      base: 'bg-white dark:border-gray-700 dark:bg-gray-800 shadow-navbar px-2 py-2.5 sm:px-4 ',
       inner: {
         base: 'container h-12 flex items-center justify-between gap-x-0.5 mx-auto',
       },
