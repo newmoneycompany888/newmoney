@@ -32,7 +32,7 @@ export const Article: FC<IArticleProps> = () => {
         {articles.map((article, index) => (
           <article
             key={`article-${index}`}
-            className="bg-white active:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-900 dark:active:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md hover:shadow-2xl dark:hover:shadow-md cursor-pointer p-2 md:p-4"
+            className="bg-white active:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-800 dark:active:bg-gray-900 border border-gray-200 dark:border-gray-600 rounded-lg shadow-md hover:shadow-2xl dark:hover:shadow-md cursor-pointer p-2 md:p-4"
           >
             <img className="w-full object-cover rounded-lg mb-2" src={article.image} alt="article" />
             <span className="bg-primary-100 dark:bg-primary-200 text-primary-800 dark:text-primary-900 text-xs font-semibold rounded px-2.5 py-0.5">

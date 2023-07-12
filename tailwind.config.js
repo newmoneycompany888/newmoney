@@ -59,6 +59,7 @@ module.exports = {
         '1fr-auto': '1fr auto',
       },
       gridTemplateColumns: {
+        'auto-1fr': 'auto 1fr',
         '1fr-auto-auto': '1fr auto auto',
       },
       boxShadow: {

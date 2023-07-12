@@ -5,8 +5,25 @@ import { Flowbite } from 'flowbite-react'
 import type { CustomFlowbiteTheme } from 'flowbite-react'
 
 const flowbiteTheme: CustomFlowbiteTheme = {
+  button: {
+    color: {
+      primary:
+        'text-white bg-primary-700 border border-transparent enabled:hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:enabled:hover:bg-primary-700 dark:focus:ring-primary-800',
+      secondary:
+        'text-white bg-secondary-400 border border-transparent enabled:hover:bg-secondary-500 focus:ring-4 focus:ring-secondary-300 dark:focus:ring-secondary-900',
+    },
+  },
   card: {
     root: { children: 'flex h-full flex-col p-4 sm:p-6' },
+  },
+  textInput: {
+    field: {
+      input: {
+        sizes: {
+          lg: 'sm:text-md p-3',
+        },
+      },
+    },
   },
   navbar: {
     root: {
