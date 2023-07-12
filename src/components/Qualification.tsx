@@ -19,14 +19,14 @@ const DOCUMENTS = [
 
 export const Qualification: FC<IQualificationProps> = () => {
   return (
-    <div className="grid md:col-span-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
+    <div className="grid md:col-span-2 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12">
       <img
         src="/images/portrait-beautiful-young-asian-woman-smiles-with-action-yellow-wall.webp"
         alt="portrait-beautiful-young-asian-woman-smiles-with-action-yellow-wall"
-        className="h-full object-cover rounded"
+        className="lg:col-span-2 h-full object-cover rounded"
       />
 
-      <div className="lg:col-span-2 space-y-6">
+      <div className="lg:col-span-3 space-y-6 py-12">
         <div>
           <h3 className="text-primary dark:text-white text-xl sm:text-2xl lg:text-3xl font-bold text-center md:text-left">คุณสมบัติของผู้ยื่นกู้สินเชื่อ</h3>
           <hr className="border-t border-t-gray-300 dark:border-t-gray-200 mt-4 mb-5" />

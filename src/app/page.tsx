@@ -8,7 +8,7 @@ const Home = () => {
           <RequestProcess />
         </div>
       </section>
-      <section className="bg-gray-100 dark:bg-gray-800 py-12">
+      <section className="bg-gray-100 dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <Qualification />
         </div>
