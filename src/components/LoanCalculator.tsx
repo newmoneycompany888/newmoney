@@ -26,15 +26,15 @@ export function LoanCalculator(props: LoanCalculatorProps) {
     const loanInterestRate = Number(formData.get('loan_interest_rate'))
     const loanTerm = Number(formData.get('loan_term'))
 
-    setLoanCalculationResults(Number(((loanAmount + loanAmount * (loanInterestRate / 100)) / (loanTerm * 12)).toFixed(2)))
+    setLoanCalculationResults(Number(((loanAmount + loanAmount * (loanInterestRate / 100)) / loanTerm).toFixed(2)))
   }
 
   return (
     <div
-      className={classNames('w-full max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700', className)}
+      className={classNames('w-full max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-700 dark:border-gray-700', className)}
       {...rest}
     >
-      <h5 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white mb-6">คำนวณสินเชื่อยอดชำระต่อเดือน</h5>
+      <h5 className="text-xl font-semibold tracking-tight leading-7 text-gray-900 dark:text-white mb-6">คำนวณสินเชื่อยอดชำระต่อเดือน</h5>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div>
           <Label htmlFor="loan_amount" value="จำนวนที่ต้องการกู้ (บาท)" className="required dark:text-gray-300 text-base font-medium" />
@@ -45,7 +45,7 @@ export function LoanCalculator(props: LoanCalculatorProps) {
           <TextInput type="number" id="loan_interest_rate" name="loan_interest_rate" sizing="lg" className="text-base" required />
         </div>
         <div>
-          <Label htmlFor="loan_term" value="ระยะเวลาที่ขอกู้ (ปี):" className="required dark:text-gray-300 text-base font-medium" />
+          <Label htmlFor="loan_term" value="ระยะเวลาที่ขอกู้ (เดือน):" className="required dark:text-gray-300 text-base font-medium" />
           <TextInput
             type="number"
             id="loan_term"
@@ -70,7 +70,7 @@ export function LoanCalculator(props: LoanCalculatorProps) {
       </form>
       {loanCalculationResult && (
         <>
-          <h6 className="text-xl font-medium leading-7 text-gray-900 dark:text-white underline mt-6 mb-4">ผลการคำนวณ</h6>
+          <h6 className="text-lg font-medium leading-7 text-gray-900 dark:text-white underline mt-6 mb-4">ผลการคำนวณ</h6>
           <div className="flex justify-between items-end gap-x-4 text-base font-normal leading-none text-gray-700">
             <p className="pb-1">ยอดชำระต่อเดือน</p>
             <p>

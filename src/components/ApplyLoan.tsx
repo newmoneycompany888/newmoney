@@ -271,7 +271,7 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
             </div>
           </div>
         </div>
-        <Button type="submit" isProcessing={isPending} className="col-span-full">
+        <Button type="submit" isProcessing={isPending} color="primary" className="col-span-full">
           ส่งข้อมูล
         </Button>
       </form>

@@ -67,6 +67,7 @@ module.exports = {
       },
       backgroundImage: {
         footer: 'url(/backgrounds/bg-footer.jpeg)',
+        'loan-calculator': 'url(/backgrounds/bg-loan-calculator.jpeg)',
       },
       zIndex: {
         999: 999,
