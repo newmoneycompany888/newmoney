@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { FC } from 'react'
 
-import { BLOGS } from '@/constants'
+import { BLOGS, ROUTES } from '@/constants'
 
 interface IBlogProps {
   hiddenSlug?: string
@@ -18,7 +18,7 @@ export const Blog: FC<IBlogProps> = ({ hiddenSlug }) => {
         <article
           key={`blog-${index}`}
           className="bg-white active:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-800 dark:active:bg-gray-900 border border-gray-200 dark:border-gray-600 rounded-lg shadow-md hover:shadow-2xl dark:hover:shadow-md cursor-pointer p-2 md:p-4"
-          onClick={() => router.push(`/blog/${blog.slug}`)}
+          onClick={() => router.push(ROUTES.BLOG.replace(':slug', blog.slug), { scroll: true })}
         >
           <img className="w-full object-cover rounded-lg mb-2" src={blog.image} alt="blog" />
           <span className="bg-primary-100 dark:bg-primary-200 text-primary-800 dark:text-primary-900 text-xs font-semibold rounded px-2.5 py-0.5">บทความ</span>
