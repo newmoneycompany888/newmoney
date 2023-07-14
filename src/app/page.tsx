@@ -1,6 +1,6 @@
 import { ApplyLoan, Article, LoanCalculator, Qualification, RequestProcess } from '@/components'
 
-const Home = () => {
+const HomePage = () => {
   return (
     <main className="bg-white dark:bg-gray-900">
       <section className="bg-white dark:bg-gray-900 py-12">
@@ -74,4 +74,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePage
