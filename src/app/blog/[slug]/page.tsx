@@ -1,4 +1,7 @@
+import { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
+import type { OpenGraph } from 'next/dist/lib/metadata/types/opengraph-types'
+import type { Twitter } from 'next/dist/lib/metadata/types/twitter-types'
 
 import { BLOGS } from '@/constants'
 
@@ -6,6 +9,46 @@ import { Blog } from '@/components'
 
 interface IBlogPageProps {
   params: Record<'slug', string>
+}
+
+export const generateMetadata = async ({ params }: IBlogPageProps, parent: ResolvingMetadata): Promise<Metadata> => {
+  const blog = BLOGS.find((blog) => blog.slug === decodeURIComponent(params.slug))
+
+  const title = `${blog ? blog.title : 'ไม่พบบทความ'} - New Money`
+  const description = blog?.shortContent ?? '-'
+
+  const prev = await parent
+
+  const prevOpenGrap = (prev?.openGraph ?? { type: 'website' }) as OpenGraph
+  const prevTwitter = (prev?.twitter ?? { card: 'summary' }) as Twitter
+
+  return {
+    title,
+    description,
+    keywords: [],
+    openGraph: {
+      ...prevOpenGrap,
+      title: title,
+      description,
+      images: blog
+        ? {
+            url: blog.image,
+            alt: 'Blog',
+          }
+        : undefined,
+    },
+    twitter: {
+      ...prevTwitter,
+      title,
+      description,
+      images: blog
+        ? {
+            url: blog.image,
+            alt: 'Blog',
+          }
+        : undefined,
+    },
+  }
 }
 
 export const generateStaticParams = () => BLOGS.map((blog) => ({ slug: blog.slug }))
