@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { FC } from 'react'
 import { Button } from 'flowbite-react'
+
 import { ROUTES } from '@/constants'
 
 const NotFound: FC = () => {
