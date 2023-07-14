@@ -1,13 +1,11 @@
-import { Noto_Sans_Thai } from 'next/font/google'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
+import { noto_sans_thai } from './fonts'
 
 import { App } from './App'
 
 import './globals.css'
-
-const fonts = Noto_Sans_Thai({ subsets: ['latin'], display: 'swap', fallback: ['sans-serif'], adjustFontFallback: true })
 
 export async function generateMetadata(): Promise<Metadata> {
   const title = 'New Money - Loan for Business'
@@ -61,8 +59,8 @@ interface IRootLayoutParams {
 
 const RootLayout = ({ children }: IRootLayoutParams) => {
   return (
-    <html lang="th">
-      <body className={fonts.className}>
+    <html lang="th" className={noto_sans_thai.variable}>
+      <body>
         <div id="__next">
           <App>{children}</App>
           <Toaster />

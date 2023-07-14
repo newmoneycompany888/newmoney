@@ -28,6 +28,22 @@ module.exports = {
           800: '#f8a108',
           900: '#f67600',
         },
+        line: {
+          DEFAULT: '#00b900',
+          50: '#e6f7e4',
+          100: '#c4eabe',
+          200: '#9cdc94',
+          300: '#6fcf65',
+          400: '#47c43f',
+          500: '#00b900',
+          600: '#00aa00',
+          700: '#009700',
+          800: '#008600',
+          900: '#006800',
+        },
+      },
+      opacity: {
+        85: '0.85',
       },
       spacing: {
         7.5: '1.875rem',
@@ -40,6 +56,7 @@ module.exports = {
       maxWidth: {
         80: '20rem',
         89: '22.25rem',
+        96: '24rem',
       },
       typography: {
         lg: {
@@ -66,8 +83,10 @@ module.exports = {
         navbar: '0px 2px 15px rgba(0, 0, 0, 0.1)',
       },
       backgroundImage: {
-        footer: 'url(/backgrounds/bg-footer.jpeg)',
+        'coin-calculator': 'url(/backgrounds/bg-coins-calculator.jpeg)',
         'loan-calculator': 'url(/backgrounds/bg-loan-calculator.jpeg)',
+        // TODO: change bg footer
+        footer: 'url(/backgrounds/bg-footer.jpeg)',
       },
       zIndex: {
         999: 999,

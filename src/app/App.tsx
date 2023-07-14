@@ -10,7 +10,7 @@ import Theme from './theme'
 import { FiPhoneCall, FiMail } from 'react-icons/fi'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
 
-import { ROUTES } from '@/constants'
+import { CONTRACT_US, ROUTES } from '@/constants'
 
 export interface AppProps {}
 
@@ -19,7 +19,7 @@ export function App(props: PropsWithChildren<AppProps>) {
 
   const router = useRouter()
 
-  const [scrollY, setScrollY] = useState<number>(0)
+  const [scrollY, setScrollY] = useState<number>(global?.window && window.screenY)
 
   useEffect(() => {
     handleScroll()
@@ -39,13 +39,13 @@ export function App(props: PropsWithChildren<AppProps>) {
     () => [
       {
         icon: <FiPhoneCall size={24} />,
-        label: '098-3456489',
-        href: 'tel:0983456489',
+        label: CONTRACT_US.TEL.LABEL,
+        href: CONTRACT_US.TEL.HREF,
       },
       {
         icon: <FiMail size={24} />,
-        label: 'newmoneycompany888@gmail.com',
-        href: 'mailto:newmoneycompany888@gmail.com',
+        label: CONTRACT_US.EMAIL.LABEL,
+        href: CONTRACT_US.EMAIL.HREF,
       },
       {
         icon: (
@@ -60,13 +60,13 @@ export function App(props: PropsWithChildren<AppProps>) {
             </g>
           </svg>
         ),
-        label: 'ไลน์ไอดี @273axokg',
-        href: 'https://page.line.me/273axokg',
+        label: `ไลน์ไอดี ${CONTRACT_US.LINE.LABEL}`,
+        href: CONTRACT_US.LINE.HREF,
       },
       {
         icon: <HiOutlineLocationMarker size={24} />,
-        label: '16/65 ม.2 บางบอน 3 บางบอน กทม 10150',
-        href: '#',
+        label: CONTRACT_US.ADDRESS.LABEL,
+        href: CONTRACT_US.ADDRESS.HREF,
       },
     ],
     []
@@ -82,8 +82,8 @@ export function App(props: PropsWithChildren<AppProps>) {
         >
           <div className="w-full max-w-5xl lg:max-w-6xl 2xl:max-w-7xl h-9 flex justify-end items-center gap-x-1.5 text-base font-normal leading-6 text-white px-2.5 mx-auto">
             สอบถามเพิ่มเติม โทร.
-            <a className="hover:underline" href="tel:0983456489">
-              098-3456489
+            <a className="hover:underline" href={CONTRACT_US.TEL.HREF}>
+              {CONTRACT_US.TEL.LABEL}
             </a>
           </div>
           <Navbar fluid>

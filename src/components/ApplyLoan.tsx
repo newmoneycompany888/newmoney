@@ -3,7 +3,7 @@
 import { useTransition, type FC } from 'react'
 import { Button, Card, Checkbox, FileInput, HelperText, Label, Select, TextInput, Textarea, Toast } from 'flowbite-react'
 import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
+import { yupResolver } from '@hookform/resolvers/yup/dist/yup'
 import * as yup from 'yup'
 import { toast } from 'react-hot-toast'
 import { HiOutlineCheck } from 'react-icons/hi'
