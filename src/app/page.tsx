@@ -63,12 +63,12 @@ function HomePage() {
           </div>
         </div>
       </section>
-      <section className="bg-white dark:bg-gray-900 py-12">
+      <section id="request-process-section" className="bg-white dark:bg-gray-900 py-12">
         <div className="container mx-auto px-4 xl:px-0">
           <RequestProcess />
         </div>
       </section>
-      <section className="bg-gray-100 dark:bg-gray-800">
+      <section id="qualification-section" className="bg-gray-100 dark:bg-gray-800">
         <div className="container mx-auto px-4 xl:px-0">
           <Qualification />
         </div>
@@ -125,7 +125,7 @@ function HomePage() {
           <ApplyLoan />
         </div>
       </section>
-      <section className="bg-gray-100 dark:bg-gray-800 py-12">
+      <section id="article-section" className="bg-gray-100 dark:bg-gray-800 py-12">
         <div className="container mx-auto px-4 xl:px-0">
           <Article />
         </div>

@@ -1,8 +1,7 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-import React, { PropsWithChildren, useEffect, useMemo, useState } from 'react'
+import React, { PropsWithChildren, useEffect, useMemo, useRef, useState } from 'react'
 
 import { DarkThemeToggle, Navbar } from 'flowbite-react'
 import Theme from './theme'
@@ -14,12 +13,27 @@ import { CONTRACT_US, ROUTES } from '@/constants'
 
 export interface AppProps {}
 
+const NAV_LINKS = [
+  {
+    key: '',
+    name: 'บริการของเรา',
+  },
+  {
+    key: 'request-process-section',
+    name: 'ขั้นตอนการยื่นกู้',
+  },
+  { key: 'qualification-section', name: 'คุณสมบัติของผู้กู้' },
+  { key: 'article-section', name: 'บทความน่ารู้' },
+  { key: 'footer', name: 'ติดต่อเรา' },
+]
+
 export function App(props: PropsWithChildren<AppProps>) {
   const { children } = props
 
-  const router = useRouter()
-
   const [scrollY, setScrollY] = useState<number>(global?.window && window.screenY)
+  const [activeNavLink, setActiveNavLink] = useState<string | null>(null)
+
+  const subHeaderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     handleScroll()
@@ -32,7 +46,26 @@ export function App(props: PropsWithChildren<AppProps>) {
   }, [])
 
   const handleScroll = () => {
-    setScrollY(window.scrollY)
+    const scrollY = window.scrollY
+    const subHeaderHeight = subHeaderRef.current?.clientHeight ?? 0
+
+    const activeNavLink =
+      [...NAV_LINKS].reverse().find((navLink) => {
+        const el = document.getElementById(navLink.key)
+
+        if (el) {
+          if (scrollY > subHeaderHeight) {
+            return el.offsetTop - subHeaderHeight < scrollY + subHeaderHeight
+          }
+
+          return el.offsetTop < scrollY
+        }
+
+        return false
+      })?.key ?? null
+
+    setScrollY(scrollY)
+    setActiveNavLink(activeNavLink)
   }
 
   const contactUs = useMemo(
@@ -72,15 +105,28 @@ export function App(props: PropsWithChildren<AppProps>) {
     []
   )
 
+  const handleNavigate = (navLink: (typeof NAV_LINKS)[0]) => {
+    const subHeaderHeight = subHeaderRef.current?.clientHeight ?? 0
+
+    const el = document.getElementById(navLink.key)
+
+    if (el) {
+      window.scrollTo({ top: el.offsetTop - (subHeaderHeight + 32), behavior: 'smooth' })
+    }
+  }
+
   return (
     <Theme>
       <div className="relative w-full h-full grid grid-rows-1fr-auto pt-26">
         <header
           className={`w-full fixed top-0 left-0 right-0 z-999 bg-primary-900 dark:bg-primary transition-transform ${
-            scrollY > 36 ? '-translate-y-9' : 'translate-y-0'
+            scrollY > (subHeaderRef.current?.clientHeight ?? 0) ? '-translate-y-9' : 'translate-y-0'
           }`}
         >
-          <div className="w-full max-w-5xl lg:max-w-6xl 2xl:max-w-7xl h-9 flex justify-end items-center gap-x-1.5 text-base font-normal leading-6 text-white px-2.5 mx-auto">
+          <div
+            ref={subHeaderRef}
+            className="w-full max-w-5xl lg:max-w-6xl 2xl:max-w-7xl h-9 flex justify-end items-center gap-x-1.5 text-base font-normal leading-6 text-white px-2.5 mx-auto"
+          >
             สอบถามเพิ่มเติม โทร.
             <a className="hover:underline" href={CONTRACT_US.TEL.HREF}>
               {CONTRACT_US.TEL.LABEL}
@@ -93,17 +139,17 @@ export function App(props: PropsWithChildren<AppProps>) {
             </Navbar.Brand>
             <Navbar.Toggle className="ml-auto" />
             <Navbar.Collapse className="ml-auto">
-              <Navbar.Link href="#">บริการของเรา</Navbar.Link>
-              <Navbar.Link href="#">ขั้นตอนการยื่นกู้</Navbar.Link>
-              <Navbar.Link href="#">คุณสมบัติของผู้กู้</Navbar.Link>
-              <Navbar.Link href="#">บทความน่ารู้</Navbar.Link>
-              <Navbar.Link href="#">ติดต่อเรา</Navbar.Link>
+              {NAV_LINKS.map((navLink, index) => (
+                <Navbar.Link key={`nav-link-${index}`} as="button" active={navLink.key === activeNavLink} onClick={() => handleNavigate(navLink)}>
+                  {navLink.name}
+                </Navbar.Link>
+              ))}
             </Navbar.Collapse>
             <DarkThemeToggle />
           </Navbar>
         </header>
         {children}
-        <footer className="relative w-full bg-footer bg-no-repeat bg-cover bg-center">
+        <footer id="footer" className="relative w-full bg-footer bg-no-repeat bg-cover bg-center">
           <div className="bg-primary-900/30 dark:bg-primary/30 pt-7.5 pb-5">
             <div className="container px-2 sm:px-4 mx-auto">
               <section className="flex flex-row flex-wrap justify-between gap-x-6 gap-y-2">
