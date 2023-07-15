@@ -26,8 +26,9 @@ export function Banner(props: BannerProps) {
               <div
                 key={`highlight-${index}`}
                 className={
+                  'transition-transform ' +
                   (index % 2 === 0 ? 'w-28 h-28 mt-8' : 'w-24 h-24 mb-8') +
-                  ' flex items-center justify-center bg-primary hover:bg-gradient-to-bl active:bg-gradient-to-br from-primary-500 to-primary rounded-full'
+                  ' flex items-center justify-center bg-primary hover:bg-gradient-to-bl active:bg-gradient-to-br from-primary-500 to-primary rounded-full hover:scale-105'
                 }
               >
                 <span className="text-sm font-normal leading-5 text-white text-center whitespace-pre-line">{highlight.LABEL}</span>

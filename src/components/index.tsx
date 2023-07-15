@@ -1,4 +1,5 @@
 export * from './ExperiencingIssue'
+export * from './CustomerGroup'
 export * from './RequestProcess'
 export * from './Qualification'
 export * from './ApplyLoan'

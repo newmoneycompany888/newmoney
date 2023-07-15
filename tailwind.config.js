@@ -85,6 +85,7 @@ module.exports = {
       backgroundImage: {
         'coin-calculator': 'url(/backgrounds/bg-coins-calculator.jpeg)',
         'loan-calculator': 'url(/backgrounds/bg-loan-calculator.jpeg)',
+        'customer-group': 'url(/backgrounds/bg-customer-group.png)',
         // TODO: change bg footer
         footer: 'url(/backgrounds/bg-footer.jpeg)',
       },

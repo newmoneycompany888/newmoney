@@ -23,3 +23,17 @@
     @apply after:content-['*'] after:text-red-500;
   }
 }
+
+/* Swiper */
+.swiper > .swiper-button-prev,
+.swiper > .swiper-button-next {
+  @apply after:text-primary after:text-3xl;
+}
+
+.swiper > .swiper-button-prev {
+  @apply after:content-['prev'];
+}
+
+.swiper > .swiper-button-next {
+  @apply after:content-['next'];
+}

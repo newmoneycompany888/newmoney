@@ -2,11 +2,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
-
 import { Button } from 'flowbite-react'
-import { ApplyLoan, Article, Banner, ExperiencingIssue, LoanCalculator, Qualification, RequestProcess } from '@/components'
-
 import { FiPhoneCall } from 'react-icons/fi'
+
+import { ApplyLoan, Article, Banner, CustomerGroup, ExperiencingIssue, LoanCalculator, Qualification, RequestProcess } from '@/components'
 
 import { CONTRACT_US } from '@/constants'
 
@@ -61,6 +60,13 @@ function HomePage() {
         </div>
       </section>
 
+      <section className="bg-customer-group bg-no-repeat bg-cover">
+        <div className="bg-gray-800 bg-opacity-30">
+          <div className="container mx-auto px-4 xl:px-0">
+            <CustomerGroup />
+          </div>
+        </div>
+      </section>
       <section id="request-process-section" className="bg-white dark:bg-gray-900 py-12">
         <div className="container mx-auto px-4 xl:px-0">
           <RequestProcess />
