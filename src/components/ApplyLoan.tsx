@@ -93,7 +93,7 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
   }
 
   return (
-    <Card className="w-full max-w-screen-lg mx-auto">
+    <Card className="w-full max-w-screen-lg mx-auto pt-8 pb-2">
       <h2 className="text-gray-900 dark:text-white text-2xl sm:text-3xl lg:text-4xl font-extrabold text-center mb-2 sm:mb-4">กรอกข้อมูล สมัครสินเชื่อธุรกิจ</h2>
       <p className="text-gray-500 dark:text-gray-400 sm:text-xl font-light text-center mb-8 sm:mb-12">เจ้าหน้าที่จะติดต่อกลับหาคุณทันที</p>
       <form className="grid md:grid-cols-2 gap-2 sm:gap-4" onSubmit={handleSubmit(handleSubmitApplyLoan)}>

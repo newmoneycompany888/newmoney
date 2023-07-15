@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 
 import { Button } from 'flowbite-react'
-import { ApplyLoan, Article, LoanCalculator, Qualification, RequestProcess } from '@/components'
+import { ApplyLoan, Article, ExperiencingIssue, LoanCalculator, Qualification, RequestProcess } from '@/components'
 
 import { FiPhoneCall } from 'react-icons/fi'
 
@@ -18,6 +18,11 @@ function HomePage() {
         <svg className="w-full h-auto text-white" viewBox="0 0 1440 500" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="1440" height="500" fill="currentColor" />
         </svg>
+      </section>
+      <section className="bg-gray-800 dark:bg-gray-900 pt-12 pb-16">
+        <div className="container mx-auto px-4 xl:px-0">
+          <ExperiencingIssue />
+        </div>
       </section>
       <section className="bg-coin-calculator bg-no-repeat bg-cover bg-left-bottom">
         <div className="w-full bg-secondary bg-opacity-85">
