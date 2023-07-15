@@ -55,12 +55,15 @@ export const CustomerGroup: FC<ICustomerGroupProps> = () => {
           breakpoints={{
             640: {
               slidesPerView: 2,
+              loopedSlides: 2,
             },
             768: {
               slidesPerView: 3,
+              loopedSlides: 2,
             },
             1024: {
               slidesPerView: 4,
+              loopedSlides: 3,
             },
           }}
           loop
