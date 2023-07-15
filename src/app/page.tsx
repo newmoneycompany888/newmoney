@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 
 import { Button } from 'flowbite-react'
-import { ApplyLoan, Article, ExperiencingIssue, LoanCalculator, Qualification, RequestProcess } from '@/components'
+import { ApplyLoan, Article, Banner, ExperiencingIssue, LoanCalculator, Qualification, RequestProcess } from '@/components'
 
 import { FiPhoneCall } from 'react-icons/fi'
 
@@ -14,17 +14,9 @@ function HomePage() {
   return (
     <main className="bg-white dark:bg-gray-900">
       <section>
-        {/* // TODO: banner */}
-        <svg className="w-full h-auto text-white" viewBox="0 0 1440 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="1440" height="500" fill="currentColor" />
-        </svg>
+        <Banner />
       </section>
-      <section className="bg-gray-800 dark:bg-gray-900 pt-12 pb-16">
-        <div className="container mx-auto px-4 xl:px-0">
-          <ExperiencingIssue />
-        </div>
-      </section>
-      <section className="bg-coin-calculator bg-no-repeat bg-cover bg-left-bottom">
+      <section id="our-services-section" className="bg-coin-calculator bg-no-repeat bg-cover bg-left-bottom">
         <div className="w-full bg-secondary bg-opacity-85">
           <div className="container flex flex-col-reverse md:flex-row lg:grid lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12 px-4 xl:px-0 mx-auto">
             <article className="relative lg:col-span-2 flex flex-col justify-center pb-12 md:pt-12">
@@ -63,6 +55,12 @@ function HomePage() {
           </div>
         </div>
       </section>
+      <section className="bg-gray-800 dark:bg-gray-900 pt-12 pb-16">
+        <div className="container mx-auto px-4 xl:px-0">
+          <ExperiencingIssue />
+        </div>
+      </section>
+
       <section id="request-process-section" className="bg-white dark:bg-gray-900 py-12">
         <div className="container mx-auto px-4 xl:px-0">
           <RequestProcess />

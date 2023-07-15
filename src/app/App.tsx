@@ -15,7 +15,7 @@ export interface AppProps {}
 
 const NAV_LINKS = [
   {
-    key: '',
+    key: 'our-services-section',
     name: 'บริการของเรา',
   },
   {
