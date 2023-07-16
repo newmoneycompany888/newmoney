@@ -13,19 +13,37 @@ interface IBlogPageProps {
 }
 
 const getBlogList = async (hiddenID: number): Promise<BlogModel[]> => {
-  const response = await fetch(`${ENVIRONMENT.baseUrl}/api/blog?hiddenID=${hiddenID}`, { next: { revalidate: 60 } })
+  const response = await fetch(`${ENVIRONMENT.baseUrl}/api/blog?hiddenID=${hiddenID}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    next: { revalidate: 60 },
+  })
 
   return response.json()
 }
 
 const getBlogSlugList = async (): Promise<BlogModel[]> => {
-  const response = await fetch(`${ENVIRONMENT.baseUrl}/api/blog?slugOnly=1`, { next: { revalidate: 60 } })
+  const response = await fetch(`${ENVIRONMENT.baseUrl}/api/blog?slugOnly=1`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    next: { revalidate: 60 },
+  })
 
   return response.json()
 }
 
 const getBlogBySlug = async (slug: string): Promise<BlogModel | null> => {
-  const response = await fetch(`${ENVIRONMENT.baseUrl}/api/blog/slug/${slug}`, { next: { revalidate: 60 } })
+  const response = await fetch(`${ENVIRONMENT.baseUrl}/api/blog/slug/${slug}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    next: { revalidate: 60 },
+  })
 
   return response.json()
 }

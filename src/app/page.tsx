@@ -6,7 +6,13 @@ import { ApplyLoan, Article, Banner, CustomerGroup, ExperiencingIssue, LoanCalcu
 import { ENVIRONMENT } from '@/constants'
 
 const getBlogList = async (): Promise<Blog[]> => {
-  const response = await fetch(`${ENVIRONMENT.baseUrl}/api/blog`, { next: { revalidate: 60 } })
+  const response = await fetch(`${ENVIRONMENT.baseUrl}/api/blog`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    next: { revalidate: 60 },
+  })
 
   return response.json()
 }
