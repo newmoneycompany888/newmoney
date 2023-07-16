@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation'
 import React from 'react'
 import type { Blog } from '@prisma/client'
 
@@ -6,6 +7,7 @@ import { ApplyLoan, Article, Banner, CustomerGroup, ExperiencingIssue, LoanCalcu
 import { ENVIRONMENT } from '@/constants'
 
 const getBlogList = async (): Promise<Blog[]> => {
+  redirect(`/test?fetchUrl=${`${ENVIRONMENT.baseUrl}/api/blog`}`)
   const response = await fetch(`${ENVIRONMENT.baseUrl}/api/blog`, {
     headers: {
       'Content-Type': 'application/json',
