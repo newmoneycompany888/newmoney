@@ -33,7 +33,20 @@ const validateSchema = yup.object().shape({
   file: yup.mixed<FileList>().nullable(),
 })
 
-const businessTypeList = ['ร้านขายยา']
+const businessTypeList = [
+  'ร้านขายยา',
+  'คลีนิคเสริมความงามและสปา',
+  'ขายสินค้าออนไลน์',
+  'โรงงานอุตสาหกรรม',
+  'คาร์แคร์-ประดับยนต์',
+  'อู่ซ่อมรถยนต์-อู่ทำสีรถยนต์',
+  'นำเข้า-ส่งออกสินค้า',
+  'ขนส่งสินค้า',
+  'โรงแรม-รีสอร์ท',
+  'ขายวัสดุก่อสร้าง-ขายอุปกรณ์ไฟฟ้า',
+  'บจก. หรือ หจก.',
+  'อาชีพอื่นๆ',
+]
 
 export const ApplyLoan: FC<IApplyLoanProps> = () => {
   const [isPending, startTransition] = useTransition()
