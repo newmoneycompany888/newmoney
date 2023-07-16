@@ -33,9 +33,8 @@ const HomePage = async () => {
           <ExperiencingIssue />
         </div>
       </section>
-
       <section className="bg-customer-group bg-no-repeat bg-cover">
-        <div className="bg-gray-800 bg-opacity-30">
+        <div className="bg-gray-800 bg-opacity-75">
           <div className="container mx-auto px-4 xl:px-0">
             <CustomerGroup />
           </div>

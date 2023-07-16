@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import { HiArrowDownCircle, HiArrowRightCircle, HiChevronLeft, HiChevronRight, HiXMark } from 'react-icons/hi2'
@@ -40,6 +40,18 @@ const CUSTOMER_GROUPS = [
 export const CustomerGroup: FC<ICustomerGroupProps> = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(-1)
   const [showPreview, setShowPreview] = useState<boolean>(false)
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape' && showPreview) {
+      setShowPreview(false)
+    }
+  }
 
   return (
     <>
