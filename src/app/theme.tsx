@@ -24,6 +24,39 @@ const flowbiteTheme: CustomFlowbiteTheme = {
         sizes: {
           lg: 'sm:text-md p-3',
         },
+        colors: {
+          gray: 'bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 hover:border-primary-500 focus:border-primary-500 focus:ring-primary-500 focus-visible:outline-none text-gray-900 dark:text-white dark:placeholder-gray-400',
+          failure:
+            'bg-red-50 dark:bg-red-100 border-red-500 dark:border-red-400 focus:border-red-500 dark:focus:border-red-500 focus:ring-red-500 dark:focus:ring-red-500 focus-visible:outline-none text-red-900 placeholder-red-700',
+        },
+      },
+    },
+  },
+  textarea: {
+    colors: {
+      gray: 'bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 hover:border-primary-500 focus:border-primary-500 focus:ring-primary-500 text-gray-900 dark:text-white dark:placeholder-gray-400',
+    },
+  },
+  select: {
+    field: {
+      select: {
+        colors: {
+          gray: 'bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 hover:border-primary-500 focus:border-primary-500 focus:ring-primary-500 text-gray-900 dark:text-white dark:placeholder-gray-400',
+        },
+      },
+    },
+  },
+  checkbox: {
+    root: {
+      base: 'h-4 w-4 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-primary-500 dark:ring-offset-primary-800 text-primary-600 rounded',
+    },
+  },
+  fileInput: {
+    field: {
+      input: {
+        colors: {
+          gray: 'bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 hover:border-primary-500 focus:border-primary-500 focus:ring-primary-500 text-gray-900 dark:text-white dark:placeholder-gray-400',
+        },
       },
     },
   },

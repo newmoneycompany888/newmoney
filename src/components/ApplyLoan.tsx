@@ -45,14 +45,14 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
   } = useForm<IApplyLoanFormValues>({
     resolver: yupResolver(validateSchema),
     defaultValues: {
-      businessName: 'บริษัท บีเทค ซอฟต์ จำกัด',
-      businessType: 'ร้านขายยา',
-      contactName: ' กิตติศักดิ์ มณีวงษ์',
-      contactPhone: '0801500531',
-      email: 'gittisak@pirsquare.net',
-      identityID: '1938492039482',
-      desiredAmount: '100000',
-      period: '180',
+      businessName: '',
+      businessType: '',
+      contactName: '',
+      contactPhone: '',
+      email: '',
+      identityID: '',
+      desiredAmount: '',
+      period: '',
       address: '',
       isAccept: false,
       file: null,
@@ -107,6 +107,7 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
           <TextInput
             {...register('businessName')}
             id="apply-loan-business-name"
+            type="text"
             color={errors.businessName ? 'failure' : undefined}
             placeholder="ชื่อธุรกิจ (ที่จดทะเบียน)"
             helperText={errors.businessName?.message}
@@ -144,6 +145,7 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
           <TextInput
             {...register('contactName')}
             id="apply-loan-contact-name"
+            type="text"
             color={errors.contactName ? 'failure' : undefined}
             placeholder="ชื่อผู้ติดต่อ"
             helperText={errors.contactName?.message}
@@ -159,6 +161,7 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
           <TextInput
             {...register('contactPhone')}
             id="apply-loan-contact-phone"
+            type="text"
             color={errors.contactPhone ? 'failure' : undefined}
             placeholder="เบอร์โทรติดต่อ"
             helperText={errors.contactPhone?.message}
@@ -190,6 +193,7 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
           <TextInput
             {...register('identityID')}
             id="apply-loan-identity-id"
+            type="text"
             color={errors.identityID ? 'failure' : undefined}
             placeholder="หมายเลขบัตรประชาชน"
             helperText={errors.identityID?.message}
@@ -205,6 +209,7 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
           <TextInput
             {...register('desiredAmount')}
             id="apply-loan-desired-amount"
+            type="text"
             color={errors.desiredAmount ? 'failure' : undefined}
             placeholder="จำนวนเงินที่ต้องการ (ระบุจำนวนเงิน)"
             helperText={errors.desiredAmount?.message}
@@ -220,6 +225,7 @@ export const ApplyLoan: FC<IApplyLoanProps> = () => {
           <TextInput
             {...register('period')}
             id="apply-loan-period"
+            type="text"
             color={errors.period ? 'failure' : undefined}
             placeholder="ระยะเวลา (สูงสุด 180 วัน)"
             helperText={errors.period?.message}
