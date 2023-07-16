@@ -2,19 +2,20 @@
 
 import { useRouter } from 'next/navigation'
 import { FC } from 'react'
+import type { Blog as BlogModel } from '@prisma/client'
 
-import { BLOGS, ROUTES } from '@/constants'
+import { ROUTES } from '@/constants'
 
 interface IBlogProps {
-  hiddenSlug?: string
+  blogs: BlogModel[]
 }
 
-export const Blog: FC<IBlogProps> = ({ hiddenSlug }) => {
+export const Blog: FC<IBlogProps> = ({ blogs }) => {
   const router = useRouter()
 
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-      {BLOGS.filter((blog) => blog.slug !== hiddenSlug).map((blog, index) => (
+      {blogs.map((blog, index) => (
         <article
           key={`blog-${index}`}
           className="bg-white active:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-800 dark:active:bg-gray-900 border border-gray-200 dark:border-gray-600 rounded-lg shadow-md hover:shadow-2xl dark:hover:shadow-md cursor-pointer p-2 md:p-4"
