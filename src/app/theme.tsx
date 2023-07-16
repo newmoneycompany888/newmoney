@@ -31,15 +31,15 @@ const flowbiteTheme: CustomFlowbiteTheme = {
     root: {
       base: 'bg-white dark:border-gray-700 dark:bg-gray-800 shadow-navbar px-2 py-2.5 sm:px-4 ',
       inner: {
-        base: 'container h-12 flex items-center justify-between gap-x-0.5 mx-auto',
+        base: 'container flex flex-wrap items-center justify-between gap-x-0.5 mx-auto',
       },
     },
     collapse: {
       base: 'w-full h-full md:flex md:items-center md:w-auto',
-      list: ' flex flex-col md:flex-row md:space-x-1 text-sm lg:text-base font-semibold text-primary my-auto whitespace-nowrap',
+      list: 'flex flex-col md:flex-row md:space-x-1 text-sm lg:text-base font-semibold text-primary my-auto whitespace-nowrap mt-4 md:mt-0',
     },
     link: {
-      base: 'block rounded py-2 px-4',
+      base: 'block rounded mx-auto py-2 px-4',
       active: {
         on: 'bg-primary text-white',
         off: 'bg-transparent hover:bg-primary text-gray-900 dark:text-white hover:text-white',

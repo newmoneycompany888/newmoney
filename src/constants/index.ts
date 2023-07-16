@@ -4,7 +4,7 @@ export const ROUTES = {
 }
 
 export const ENVIRONMENT = {
-  baseUrl: process.env.URL ?? '',
+  baseUrl: process.env.BASE_URL ?? '',
   email: {
     authUser: process.env.EMAIL_AUTH_USER,
     authPassword: process.env.EMAIL_AUTH_PASSWORD,

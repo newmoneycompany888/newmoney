@@ -21,8 +21,8 @@ const EXPERIENCING_ISSUES = [
 export const ExperiencingIssue: FC<IExperiencingIssueProps> = () => {
   return (
     <div>
-      <h2 className="text-secondary text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 md:mb-8 lg:mb-10 xl:mb-12">
-        หากธุรกิจของคุณ กำลังประสบปัญหาแบบนี้
+      <h2 className="text-secondary text-2xl sm:text-3xl lg:text-4xl font-bold text-center whitespace-pre-line sm:whitespace-normal mb-6 md:mb-8 lg:mb-10 xl:mb-12">
+        {'หากธุรกิจของคุณ \nกำลังประสบปัญหาแบบนี้'}
       </h2>
 
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">

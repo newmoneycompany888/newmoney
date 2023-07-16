@@ -19,17 +19,19 @@ const DOCUMENTS = [
 
 export const Qualification: FC<IQualificationProps> = () => {
   return (
-    <div className="grid md:col-span-2 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12">
-      <img
-        src="/images/portrait-beautiful-young-asian-woman-smiles-with-action-yellow-wall.webp"
-        alt="portrait-beautiful-young-asian-woman-smiles-with-action-yellow-wall"
-        className="lg:col-span-2 h-full object-cover rounded"
-      />
+    <div className="grid md:col-span-2 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12 py-6 lg:py-0">
+      <div className="lg:col-span-2 flex justify-center">
+        <img
+          src="/images/portrait-beautiful-young-asian-woman-smiles-with-action-yellow-wall.webp"
+          alt="portrait-beautiful-young-asian-woman-smiles-with-action-yellow-wall"
+          className="h-full object-cover rounded"
+        />
+      </div>
 
-      <div className="lg:col-span-3 space-y-6 py-12">
+      <div className="lg:col-span-3 space-y-6 lg:py-12">
         <div>
           <h3 className="text-primary dark:text-white text-xl sm:text-2xl lg:text-3xl font-bold text-center md:text-left">คุณสมบัติของผู้ยื่นกู้สินเชื่อ</h3>
-          <hr className="border-t border-t-gray-300 dark:border-t-gray-200 mt-4 mb-5" />
+          <hr className="border-t border-t-gray-300 dark:border-t-gray-200 mt-3 mb-6" />
           <ul className="space-y-2 md:space-y-4">
             {QUANTICATIONS.map((quantication, index) => (
               <li key={`quantication-${index}`} className="flex items-center space-x-2">
@@ -41,7 +43,7 @@ export const Qualification: FC<IQualificationProps> = () => {
         </div>
         <div>
           <h3 className="text-primary dark:text-white text-xl sm:text-2xl lg:text-3xl font-bold text-center md:text-left">เอกสารสำหรับยื่นกู้สินเชื่อ</h3>
-          <hr className="border-t border-t-gray-300 dark:border-t-gray-200 mt-4 mb-5" />
+          <hr className="border-t border-t-gray-300 dark:border-t-gray-200 mt-3 mb-6" />
           <ul className="space-y-2 md:space-y-4">
             {DOCUMENTS.map((document, index) => (
               <li key={`document-${index}`} className="flex items-center space-x-2">

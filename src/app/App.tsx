@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname, useRouter } from 'next/navigation'
 import React, { PropsWithChildren, useEffect, useMemo, useRef, useState } from 'react'
 
 import { DarkThemeToggle, Navbar } from 'flowbite-react'
@@ -15,25 +16,36 @@ export interface AppProps {}
 
 const NAV_LINKS = [
   {
+    key: 'home-page-container',
+    path: '/',
+    name: 'หน้าหลัก',
+  },
+  {
     key: 'our-services-section',
+    path: '/',
     name: 'บริการของเรา',
   },
   {
     key: 'request-process-section',
+    path: '/',
     name: 'ขั้นตอนการยื่นกู้',
   },
-  { key: 'qualification-section', name: 'คุณสมบัติของผู้กู้' },
-  { key: 'article-section', name: 'บทความน่ารู้' },
-  { key: 'footer', name: 'ติดต่อเรา' },
+  { key: 'qualification-section', path: '/', name: 'คุณสมบัติของผู้กู้' },
+  { key: 'article-section', path: '/', name: 'บทความน่ารู้' },
+  { key: 'footer', path: '/', name: 'ติดต่อเรา' },
 ]
 
 export function App(props: PropsWithChildren<AppProps>) {
   const { children } = props
 
+  const router = useRouter()
+  const pathname = usePathname()
+
   const [scrollY, setScrollY] = useState<number>(global?.window && window.screenY)
   const [activeNavLink, setActiveNavLink] = useState<string | null>(null)
 
   const subHeaderRef = useRef<HTMLDivElement>(null)
+  const headerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     handleScroll()
@@ -45,6 +57,10 @@ export function App(props: PropsWithChildren<AppProps>) {
     }
   }, [])
 
+  useEffect(() => {
+    handleScroll()
+  }, [pathname])
+
   const handleScroll = () => {
     const scrollY = window.scrollY
     const subHeaderHeight = subHeaderRef.current?.clientHeight ?? 0
@@ -55,10 +71,10 @@ export function App(props: PropsWithChildren<AppProps>) {
 
         if (el) {
           if (scrollY > subHeaderHeight) {
-            return el.offsetTop - subHeaderHeight < scrollY + subHeaderHeight
+            return el.offsetTop - subHeaderHeight <= scrollY + subHeaderHeight
           }
 
-          return el.offsetTop < scrollY
+          return el.offsetTop <= scrollY
         }
 
         return false
@@ -106,19 +122,33 @@ export function App(props: PropsWithChildren<AppProps>) {
   )
 
   const handleNavigate = (navLink: (typeof NAV_LINKS)[0]) => {
-    const subHeaderHeight = subHeaderRef.current?.clientHeight ?? 0
+    let timeOut = 0
 
-    const el = document.getElementById(navLink.key)
-
-    if (el) {
-      window.scrollTo({ top: el.offsetTop - (subHeaderHeight + 32), behavior: 'smooth' })
+    if (pathname !== navLink.path) {
+      router.push(navLink.path)
+      timeOut = 300
     }
+
+    setTimeout(() => {
+      const subHeaderHeight = subHeaderRef.current?.clientHeight ?? 0
+
+      const el = document.getElementById(navLink.key)
+
+      if (el) {
+        window.scrollTo({ top: el.offsetTop - (subHeaderHeight + 22), behavior: 'smooth' })
+      }
+    }, timeOut)
   }
 
   return (
     <Theme>
-      <div className="relative w-full h-full grid grid-rows-1fr-auto pt-26">
+      <div
+        id={pathname === '/' ? 'home-page-container' : undefined}
+        className="relative w-full h-full grid grid-rows-1fr-auto pt-26"
+        style={{ paddingTop: headerRef.current?.clientHeight }}
+      >
         <header
+          ref={headerRef}
           className={`w-full fixed top-0 left-0 right-0 z-999 bg-primary-900 dark:bg-primary transition-transform ${
             scrollY > (subHeaderRef.current?.clientHeight ?? 0) ? '-translate-y-9' : 'translate-y-0'
           }`}
@@ -132,20 +162,25 @@ export function App(props: PropsWithChildren<AppProps>) {
               {CONTRACT_US.TEL.LABEL}
             </a>
           </div>
-          <Navbar fluid>
+          <Navbar fluid className="min-h-[3rem]">
             <Navbar.Brand href={ROUTES.HOME}>
               <Image alt="New Money Logo" width={48} height={48} className="w-10 lg:w-12 h-10 lg:h-12 mr-2 lg:mr-3" src="/logo.png" />
               <span className="self-center whitespace-nowrap text-base lg:text-xl font-semibold dark:text-white ">New Money</span>
             </Navbar.Brand>
-            <Navbar.Toggle className="ml-auto" />
-            <Navbar.Collapse className="ml-auto">
-              {NAV_LINKS.map((navLink, index) => (
-                <Navbar.Link key={`nav-link-${index}`} as="button" active={navLink.key === activeNavLink} onClick={() => handleNavigate(navLink)}>
-                  {navLink.name}
-                </Navbar.Link>
-              ))}
-            </Navbar.Collapse>
-            <DarkThemeToggle />
+            <div className="space-x-1">
+              <Navbar.Toggle />
+              <DarkThemeToggle className="md:hidden" />
+            </div>
+            <div className="flex items-center w-full md:w-auto space-x-1">
+              <Navbar.Collapse>
+                {NAV_LINKS.map((navLink, index) => (
+                  <Navbar.Link key={`nav-link-${index}`} as="button" active={navLink.key === activeNavLink} onClick={() => handleNavigate(navLink)}>
+                    {navLink.name}
+                  </Navbar.Link>
+                ))}
+              </Navbar.Collapse>
+              <DarkThemeToggle className="hidden md:block" />
+            </div>
           </Navbar>
         </header>
         {children}
