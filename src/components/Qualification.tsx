@@ -19,8 +19,8 @@ const DOCUMENTS = [
 
 export const Qualification: FC<IQualificationProps> = () => {
   return (
-    <div className="grid md:col-span-2 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12 py-6 lg:py-0">
-      <div className="lg:col-span-2 flex justify-center">
+    <div className="grid md:grid-cols-5 gap-6 md:gap-6 lg:gap-12 py-6 lg:py-0">
+      <div className="md:col-span-2 flex justify-center">
         <img
           src="/images/portrait-beautiful-young-asian-woman-smiles-with-action-yellow-wall.webp"
           alt="portrait-beautiful-young-asian-woman-smiles-with-action-yellow-wall"
@@ -28,9 +28,9 @@ export const Qualification: FC<IQualificationProps> = () => {
         />
       </div>
 
-      <div className="lg:col-span-3 space-y-6 lg:py-12">
+      <div className="md:col-span-3 space-y-6 lg:py-12">
         <div>
-          <h3 className="text-primary dark:text-white text-xl sm:text-2xl lg:text-3xl font-bold text-center md:text-left">คุณสมบัติของผู้ยื่นกู้สินเชื่อ</h3>
+          <h3 className="text-primary dark:text-white text-2xl lg:text-3xl font-bold text-center md:text-left">คุณสมบัติของผู้ยื่นกู้สินเชื่อ</h3>
           <hr className="border-t border-t-gray-300 dark:border-t-gray-200 mt-3 mb-6" />
           <ul className="space-y-2 md:space-y-4">
             {QUANTICATIONS.map((quantication, index) => (
@@ -42,7 +42,7 @@ export const Qualification: FC<IQualificationProps> = () => {
           </ul>
         </div>
         <div>
-          <h3 className="text-primary dark:text-white text-xl sm:text-2xl lg:text-3xl font-bold text-center md:text-left">เอกสารสำหรับยื่นกู้สินเชื่อ</h3>
+          <h3 className="text-primary dark:text-white text-2xl lg:text-3xl font-bold text-center md:text-left">เอกสารสำหรับยื่นกู้สินเชื่อ</h3>
           <hr className="border-t border-t-gray-300 dark:border-t-gray-200 mt-3 mb-6" />
           <ul className="space-y-2 md:space-y-4">
             {DOCUMENTS.map((document, index) => (

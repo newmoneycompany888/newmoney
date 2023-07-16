@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '480px',
+      },
       colors: {
         primary: {
           DEFAULT: colors.violet[800],
@@ -48,6 +51,12 @@ module.exports = {
       spacing: {
         7.5: '1.875rem',
         26: '6.5rem',
+        50: '12.5rem',
+        89: '22.25rem',
+        110: '27.5rem',
+        122: '30.5rem',
+        125: '31.25rem',
+        132: '33rem',
       },
       minWidth: {
         80: '20rem',
@@ -58,19 +67,8 @@ module.exports = {
         89: '22.25rem',
         96: '24rem',
       },
-      typography: {
-        lg: {
-          css: {
-            h1: {
-              'font-size': '38px',
-              'line-height': '40px',
-            },
-            h2: {
-              'font-size': '30px',
-              'line-height': '36px',
-            },
-          },
-        },
+      minHeight: {
+        89: '22.25rem',
       },
       gridTemplateRows: {
         '1fr-auto': '1fr auto',

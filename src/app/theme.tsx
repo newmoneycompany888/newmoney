@@ -14,6 +14,9 @@ const flowbiteTheme: CustomFlowbiteTheme = {
       tel: 'text-white bg-gradient-to-br from-primary-500 active:from-primary-600 to-primary active:to-primary-900 enabled:hover:bg-gradient-to-bl focus:ring-4 focus:ring-primary-300',
       line: 'text-white bg-gradient-to-br from-line-300 active:from-line-400 to-line active:to-line-600 enabled:hover:bg-gradient-to-bl focus:ring-4 focus:ring-line-300',
     },
+    size: {
+      xl: 'text-sm sm:text-base px-2 sm:px-6 py-3 sm:py-3',
+    },
   },
   card: {
     root: { children: 'flex h-full flex-col p-4 sm:p-6' },

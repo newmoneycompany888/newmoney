@@ -15,24 +15,24 @@ import { CONTRACT_US, ROUTES } from '@/constants'
 export interface AppProps {}
 
 const NAV_LINKS = [
-  {
-    key: 'home-page-container',
-    path: '/',
-    name: 'หน้าหลัก',
-  },
+  // {
+  //   key: 'home-page-container',
+  //   path: ROUTES.HOME,
+  //   name: 'หน้าหลัก',
+  // },
   {
     key: 'our-services-section',
-    path: '/',
+    path: ROUTES.HOME,
     name: 'บริการของเรา',
   },
   {
     key: 'request-process-section',
-    path: '/',
+    path: ROUTES.HOME,
     name: 'ขั้นตอนการยื่นกู้',
   },
-  { key: 'qualification-section', path: '/', name: 'คุณสมบัติของผู้กู้' },
-  { key: 'article-section', path: '/', name: 'บทความน่ารู้' },
-  { key: 'footer', path: '/', name: 'ติดต่อเรา' },
+  { key: 'qualification-section', path: ROUTES.HOME, name: 'คุณสมบัติของผู้กู้' },
+  { key: 'article-section', path: ROUTES.HOME, name: 'บทความน่ารู้' },
+  { key: 'footer', path: ROUTES.HOME, name: 'ติดต่อเรา' },
 ]
 
 export function App(props: PropsWithChildren<AppProps>) {
@@ -41,6 +41,7 @@ export function App(props: PropsWithChildren<AppProps>) {
   const router = useRouter()
   const pathname = usePathname()
 
+  const [isReady, setIsReady] = useState<boolean>(false)
   const [scrollY, setScrollY] = useState<number>(global?.window && window.screenY)
   const [activeNavLink, setActiveNavLink] = useState<string | null>(null)
 
@@ -49,6 +50,7 @@ export function App(props: PropsWithChildren<AppProps>) {
 
   useEffect(() => {
     handleScroll()
+    setIsReady(true)
     //add eventlistener to window
     window.addEventListener('scroll', handleScroll)
     // remove event on unmount to prevent a memory leak with the cleanup
@@ -150,7 +152,7 @@ export function App(props: PropsWithChildren<AppProps>) {
         <header
           ref={headerRef}
           className={`w-full fixed top-0 left-0 right-0 z-999 bg-primary-900 dark:bg-primary transition-transform ${
-            scrollY > (subHeaderRef.current?.clientHeight ?? 0) ? '-translate-y-9' : 'translate-y-0'
+            isReady && scrollY > (subHeaderRef.current?.clientHeight ?? 0) ? '-translate-y-9' : 'translate-y-0'
           }`}
         >
           <div
@@ -168,8 +170,8 @@ export function App(props: PropsWithChildren<AppProps>) {
               <span className="self-center whitespace-nowrap text-base lg:text-xl font-semibold dark:text-white ">New Money</span>
             </Navbar.Brand>
             <div className="space-x-1">
-              <Navbar.Toggle />
               <DarkThemeToggle className="md:hidden" />
+              <Navbar.Toggle />
             </div>
             <div className="flex items-center w-full md:w-auto space-x-1">
               <Navbar.Collapse>

@@ -39,7 +39,7 @@ export const ExperiencingIssue: FC<IExperiencingIssueProps> = () => {
               />
             </div>
             <div className="flex justify-center px-2 py-1 sm:px-4">
-              <p className="text-white lg:text-lg font-medium">{experiencingIssue.title}</p>
+              <p className="text-white text-lg md:text-base lg:text-lg font-medium">{experiencingIssue.title}</p>
             </div>
           </div>
         ))}

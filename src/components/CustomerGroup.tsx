@@ -44,7 +44,7 @@ export const CustomerGroup: FC<ICustomerGroupProps> = () => {
   return (
     <>
       <div className="grid grid-cols-12 md:gap-4 py-4 md:py-0">
-        <div className="col-span-full md:col-span-3 flex flex-col justify-center items-center md:items-end mb-3 md:mb-0">
+        <div className="col-span-full md:col-span-3 xl:col-span-2 flex flex-col justify-center items-center md:items-end mb-3 md:mb-0">
           <p className="text-white text-xl md:text-lg font-medium mb-2">ไม่ว่าจะเป็นธุรกิจแบบไหน</p>
           <HiArrowRightCircle className="hidden md:block text-secondary text-4xl" />
           <HiArrowDownCircle className="md:hidden text-secondary text-4xl" />
@@ -69,7 +69,7 @@ export const CustomerGroup: FC<ICustomerGroupProps> = () => {
           loop
           navigation
           modules={[Navigation]}
-          className="col-span-full md:col-span-9 w-full"
+          className="col-span-full md:col-span-9 xl:col-span-10 w-full"
         >
           {CUSTOMER_GROUPS.map((customerGroup, index) => (
             <SwiperSlide
