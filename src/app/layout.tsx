@@ -13,7 +13,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   const title = 'New Money - Loan for Business'
   const description = 'บริการสินเชื่อ ขั้นตอนการกู้ คุณสมบัติ ติดต่อเรา สอบถาม...'
   const siteName = 'New Money'
-  const url = ENVIRONMENT.url
+  const url = ENVIRONMENT.baseUrl
   const logoUrl = '/logo.png'
   const logoAlt = 'Logo'
 
