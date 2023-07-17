@@ -45,7 +45,7 @@ export function App(props: PropsWithChildren<AppProps>) {
   const [scrollY, setScrollY] = useState<number>(global?.window && window.screenY)
   const [activeNavLink, setActiveNavLink] = useState<string | null>(null)
 
-  const subHeaderRef = useRef<HTMLDivElement>(null)
+  const subHeaderRef = useRef<HTMLDivElement | null>(null)
   const headerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -166,11 +166,11 @@ export function App(props: PropsWithChildren<AppProps>) {
           </div>
           <Navbar fluid className="min-h-[3rem]">
             <Navbar.Brand href={ROUTES.HOME}>
-              <Image alt="New Money Logo" width={48} height={48} className="w-10 lg:w-12 h-10 lg:h-12 mr-2 lg:mr-3" src="/logo.png" />
-              <span className="self-center whitespace-nowrap text-base lg:text-xl font-semibold dark:text-white ">New Money</span>
+              <Image alt="New Money Logo" width={48} height={48} className="w-12 h-12 mr-2" src="/logo.png" />
+              <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white block md:hidden lg:block">New Money</span>
             </Navbar.Brand>
             <div className="space-x-1">
-              <DarkThemeToggle className="md:hidden" />
+              {/* <DarkThemeToggle className="md:hidden" /> */}
               <Navbar.Toggle />
             </div>
             <div className="flex items-center w-full md:w-auto space-x-1">
@@ -181,7 +181,7 @@ export function App(props: PropsWithChildren<AppProps>) {
                   </Navbar.Link>
                 ))}
               </Navbar.Collapse>
-              <DarkThemeToggle className="hidden md:block" />
+              {/* <DarkThemeToggle className="hidden md:block" /> */}
             </div>
           </Navbar>
         </header>

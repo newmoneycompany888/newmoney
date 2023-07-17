@@ -16,8 +16,8 @@ export function Banner(props: BannerProps) {
   const BG_BANNER_IMAGES = useMemo(
     () => [
       // TODO: change banner bg
-      '/backgrounds/bg-banner-slide-1.jpeg',
-      '/backgrounds/bg-banner-slide-2.jpeg',
+      '/backgrounds/bg-banner-slide-1.webp',
+      '/backgrounds/bg-banner-slide-2.webp',
     ],
     []
   )
@@ -75,11 +75,7 @@ export function Banner(props: BannerProps) {
             <div
               key={`highlight-${index}`}
               className={
-                'transition-transform ' +
-                (index % 2 === 0
-                  ? 'w-20 xs:w-24 sm:w-28 md:w-28 xl:w-32 h-20 xs:h-24 sm:h-28 md:h-28 xl:h-32 md:mt-8 xl:mt-12'
-                  : 'w-20 xs:w-24 sm:w-28 md:w-24 xl:w-28 h-20 xs:h-24 sm:h-28 md:h-24 xl:h-28 md:mb-8 xl:mb-12') +
-                ' flex items-center justify-center bg-primary hover:bg-gradient-to-bl active:bg-gradient-to-br from-primary-500 to-primary rounded-full hover:scale-105'
+                'transition-transform w-20 xs:w-24 sm:w-28 md:odd:w-28 md:even:w-24 xl:odd:w-32 xl:even:w-28 h-20 xs:h-24 sm:h-28 md:odd:h-28 md:even:h-24 xl:odd:h-32 xl:even:h-28 md:odd:mt-8 md:even:mb-8 xl:odd:mt-12 xl:even:mb-12 flex items-center justify-center bg-primary hover:bg-gradient-to-bl active:bg-gradient-to-br from-primary-500 to-primary rounded-full hover:scale-105'
               }
             >
               <span className="text-xs xs:text-sm xl:text-base font-normal leading-4 xs:leading-5 xl:leading-6 text-white text-center whitespace-pre-line">

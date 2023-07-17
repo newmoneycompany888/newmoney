@@ -45,6 +45,7 @@ export const CustomerGroup: FC<ICustomerGroupProps> = () => {
     document.addEventListener('keydown', handleKeyDown)
 
     return () => document.removeEventListener('keydown', handleKeyDown)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleKeyDown = (event: KeyboardEvent) => {

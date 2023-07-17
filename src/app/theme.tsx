@@ -75,7 +75,7 @@ const flowbiteTheme: CustomFlowbiteTheme = {
       list: 'flex flex-col md:flex-row md:space-x-1 text-sm lg:text-base font-semibold text-primary my-auto whitespace-nowrap mt-4 md:mt-0',
     },
     link: {
-      base: 'block rounded mx-auto py-2 px-4',
+      base: 'w-full block rounded mx-auto py-2 px-4',
       active: {
         on: 'bg-primary text-white',
         off: 'bg-transparent hover:bg-primary text-gray-900 dark:text-white hover:text-white',

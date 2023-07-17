@@ -81,11 +81,11 @@ module.exports = {
         navbar: '0px 2px 15px rgba(0, 0, 0, 0.1)',
       },
       backgroundImage: {
-        'coin-calculator': 'url(/backgrounds/bg-coins-calculator.jpeg)',
-        'loan-calculator': 'url(/backgrounds/bg-loan-calculator.jpeg)',
+        'coin-calculator': 'url(/backgrounds/bg-coins-calculator.webp)',
+        'loan-calculator': 'url(/backgrounds/bg-loan-calculator.webp)',
         'customer-group': 'url(/backgrounds/bg-customer-group.png)',
         // TODO: change bg footer
-        footer: 'url(/backgrounds/bg-footer.jpeg)',
+        footer: 'url(/backgrounds/bg-footer.webp)',
       },
       zIndex: {
         999: 999,

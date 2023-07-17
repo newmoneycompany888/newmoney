@@ -48,7 +48,7 @@ export function OurServices(props: OurServicesProps) {
           </article>
           <div className="relative w-full max-w-80 flex lg:max-w-none lg:pb-10 xl:pb-12 mx-auto md:mx-0">
             {/* // TODO: change image */}
-            <Image className="-mt-10 md:my-auto lg:-mt-10 lg:mb-0" width={900} height={1156} src={'/images/art04.jpeg'} alt="main image" />
+            <Image className="-mt-10 md:my-auto lg:-mt-10 lg:mb-0" width={900} height={1156} src={'/images/our-service.webp'} alt="main image" />
           </div>
         </div>
       </div>
