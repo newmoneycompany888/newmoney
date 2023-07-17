@@ -46,7 +46,7 @@ export const Qualification: FC<IQualificationProps> = () => {
           <hr className="border-t border-t-gray-300 dark:border-t-gray-200 mt-3 mb-6" />
           <ul className="space-y-2 md:space-y-4">
             {DOCUMENTS.map((document, index) => (
-              <li key={`document-${index}`} className="flex items-center space-x-2">
+              <li key={`document-${index}`} className="flex items-start space-x-2">
                 <HiOutlineDocumentCheck className="shrink w-6 h-6 text-secondary-800 dark:text-secondary font-bold" />
                 <span className="flex-1 text-sm sm:text-base text-gray-900 dark:text-white font-medium">{document}</span>
               </li>
