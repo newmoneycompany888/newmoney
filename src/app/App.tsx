@@ -45,8 +45,7 @@ export function App(props: PropsWithChildren<AppProps>) {
   const [scrollY, setScrollY] = useState<number>(global?.window && window.screenY)
   const [activeNavLink, setActiveNavLink] = useState<string | null>(null)
 
-  const subHeaderRef = useRef<HTMLDivElement | null>(null)
-  const headerRef = useRef<HTMLElement>(null)
+  const subHeaderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     handleScroll()
@@ -144,13 +143,8 @@ export function App(props: PropsWithChildren<AppProps>) {
 
   return (
     <Theme>
-      <div
-        id={pathname === '/' ? 'home-page-container' : undefined}
-        className="relative w-full h-full grid grid-rows-1fr-auto pt-26"
-        style={{ paddingTop: headerRef.current?.clientHeight }}
-      >
+      <div id={pathname === '/' ? 'home-page-container' : undefined} className="relative w-full h-full grid grid-rows-1fr-auto pt-[6.125rem]">
         <header
-          ref={headerRef}
           className={`w-full fixed top-0 left-0 right-0 z-999 bg-primary-900 dark:bg-primary transition-transform ${
             isReady && scrollY > (subHeaderRef.current?.clientHeight ?? 0) ? '-translate-y-9' : 'translate-y-0'
           }`}
