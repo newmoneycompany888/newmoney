@@ -26,11 +26,17 @@ export function OurServices(props: OurServicesProps) {
               <br />
               เรามีทีมงานฝ่ายสินเชื่อพร้อมให้บริการประเมิน และตรวจสอบคุณสมบัติของผู้กู้ภายใน 2 ชั่วโมง เพื่ออำนวยความสะดวกสูงสุดให้กับผู้ขอยื่นกู้สินเชื่อ
             </p>
-            <div className="w-full flex justify-center sm:justify-start items-center gap-x-2 sm:gap-x-4 mx-auto mt-6">
+            <div className="w-full flex flex-wrap sm:flex-nowrap justify-center sm:justify-start items-center sm:gap-x-4 gap-y-2 sm:gap-y-0 mx-auto mt-6">
               <Link className="w-full sm:w-auto" href={CONTRACT_US.TEL.HREF} target="_blank">
                 <Button className="w-full sm:w-auto" color="tel" pill size="xl">
                   <FiPhoneCall className="mr-2 sm:mr-2" size={24} />
                   โทร.{CONTRACT_US.TEL.LABEL}
+                </Button>
+              </Link>
+              <Link className="w-full sm:w-auto" href={CONTRACT_US.TEL2.HREF} target="_blank">
+                <Button className="w-full sm:w-auto" color="tel2" pill size="xl">
+                  <FiPhoneCall className="mr-2 sm:mr-2" size={24} />
+                  โทร.{CONTRACT_US.TEL2.LABEL}
                 </Button>
               </Link>
               <Link className="w-full sm:w-auto" href={CONTRACT_US.LINE.HREF} target="_blank">
