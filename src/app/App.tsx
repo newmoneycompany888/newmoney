@@ -89,8 +89,13 @@ export function App(props: PropsWithChildren<AppProps>) {
     () => [
       {
         icon: <FiPhoneCall size={24} />,
-        label: CONTRACT_US.TEL.LABEL,
-        href: CONTRACT_US.TEL.HREF,
+        labels: [
+          {
+            label: CONTRACT_US.TEL.LABEL,
+            href: CONTRACT_US.TEL.HREF,
+          },
+          { label: CONTRACT_US.TEL2.LABEL, href: CONTRACT_US.TEL2.HREF },
+        ],
       },
       {
         icon: <FiMail size={24} />,
@@ -151,12 +156,18 @@ export function App(props: PropsWithChildren<AppProps>) {
         >
           <div
             ref={subHeaderRef}
-            className="w-full max-w-5xl lg:max-w-6xl 2xl:max-w-7xl h-9 flex justify-end items-center gap-x-1.5 text-base font-normal leading-6 text-white px-2.5 mx-auto"
+            className="w-full max-w-5xl lg:max-w-6xl 2xl:max-w-7xl h-9 flex justify-end items-center text-base font-normal leading-6 text-white px-2.5 mx-auto"
           >
-            สอบถามเพิ่มเติม โทร.
-            <a className="hover:underline" href={CONTRACT_US.TEL.HREF}>
-              {CONTRACT_US.TEL.LABEL}
-            </a>
+            <span>
+              <span>สอบถามเพิ่มเติม โทร. </span>
+              <a className="hover:underline" href={CONTRACT_US.TEL.HREF}>
+                {CONTRACT_US.TEL.LABEL}
+              </a>
+              <span>, </span>
+              <a className="hover:underline" href={CONTRACT_US.TEL2.HREF}>
+                {CONTRACT_US.TEL.LABEL}
+              </a>
+            </span>
           </div>
           <Navbar fluid className="min-h-[3rem]">
             <Navbar.Brand href={ROUTES.HOME}>
@@ -164,7 +175,7 @@ export function App(props: PropsWithChildren<AppProps>) {
               <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white block md:hidden lg:block">New Money</span>
             </Navbar.Brand>
             <div className="space-x-1">
-              {/* <DarkThemeToggle className="md:hidden" /> */}
+              <DarkThemeToggle className="md:hidden" />
               <Navbar.Toggle />
             </div>
             <div className="flex items-center w-full md:w-auto space-x-1">
@@ -175,7 +186,7 @@ export function App(props: PropsWithChildren<AppProps>) {
                   </Navbar.Link>
                 ))}
               </Navbar.Collapse>
-              {/* <DarkThemeToggle className="hidden md:block" /> */}
+              <DarkThemeToggle className="hidden md:block" />
             </div>
           </Navbar>
         </header>
@@ -196,12 +207,28 @@ export function App(props: PropsWithChildren<AppProps>) {
                 <article className="flex flex-wrap gap-6 py-2.5 lg:ml-auto">
                   <div className="min-w-89 flex flex-col gap-y-2">
                     <h5 className="text-xl font-semibold leading-7 text-white mb-3.5">ติดต่อเรา</h5>
-                    {contactUs.map((contact, index) => (
-                      <a key={`footer-contact-${index}`} className="flex items-center gap-x-2" href={contact.href} target="_blank">
-                        <span className="text-secondary">{contact.icon}</span>
-                        <span className="text-base font-normal leading-6 text-white">{contact.label}</span>
-                      </a>
-                    ))}
+                    {contactUs.map((contact, index) =>
+                      contact.labels ? (
+                        <span key={`footer-contact-${index}`} className="flex items-center gap-x-2">
+                          <span className="text-secondary">{contact.icon}</span>
+                          <span>
+                            {contact.labels.map((label, index) => (
+                              <span key={`footer-contact-label-${index}`}>
+                                {index ? <span className="text-base font-normal leading-6 text-white">, </span> : null}
+                                <a key={`footer-contact-${index}`} className="text-base font-normal leading-6 text-white" href={label.href} target="_blank">
+                                  {label.label}
+                                </a>
+                              </span>
+                            ))}
+                          </span>
+                        </span>
+                      ) : (
+                        <a key={`footer-contact-${index}`} className="flex items-center gap-x-2" href={contact.href} target="_blank">
+                          <span className="text-secondary">{contact.icon}</span>
+                          <span className="text-base font-normal leading-6 text-white">{contact.label}</span>
+                        </a>
+                      )
+                    )}
                   </div>
                   <Image src={'/images/M_273axokg_GW.png'} width={178} height={178} alt={'line qr code'} />
                 </article>

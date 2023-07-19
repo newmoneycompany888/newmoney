@@ -12,6 +12,7 @@ const flowbiteTheme: CustomFlowbiteTheme = {
       secondary:
         'text-white bg-secondary-400 border border-transparent enabled:hover:bg-secondary-500 focus:ring-4 focus:ring-secondary-300 dark:focus:ring-secondary-900',
       tel: 'text-white bg-gradient-to-br from-primary-500 active:from-primary-600 to-primary active:to-primary-900 enabled:hover:bg-gradient-to-bl focus:ring-4 focus:ring-primary-300',
+      tel2: 'text-white bg-gradient-to-br from-tertiary-500 active:from-tertiary-600 to-tertiary active:to-tertiary-900 enabled:hover:bg-gradient-to-bl focus:ring-4 focus:ring-tertiary-300',
       line: 'text-white bg-gradient-to-br from-line-300 active:from-line-400 to-line active:to-line-600 enabled:hover:bg-gradient-to-bl focus:ring-4 focus:ring-line-300',
     },
     size: {
