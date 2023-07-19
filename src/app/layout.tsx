@@ -14,7 +14,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   const description = 'บริการสินเชื่อ ขั้นตอนการกู้ คุณสมบัติ ติดต่อเรา สอบถาม...'
   const siteName = 'New Money'
   const url = ENVIRONMENT.baseUrl
-  const logoUrl = '/logo.png'
+  const logoUrl = '/logo.jpg'
   const logoAlt = 'Logo'
 
   return {
@@ -50,6 +50,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
         { type: 'image/png', sizes: '32x32', url: '/favicon-32x32.png' },
       ],
       apple: [{ sizes: '180x180', url: '/apple-touch-icon.png' }],
+      other: [{ rel: 'mask-icon', url: '/safari-pinned-tab.svg' }],
     },
     manifest: '/site.webmanifest',
     themeColor: '#ffffff',
