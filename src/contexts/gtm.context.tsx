@@ -1,9 +1,9 @@
 'use client'
 
+import { usePathname, useSearchParams } from 'next/navigation'
 import { createContext, PropsWithChildren, useEffect } from 'react'
 import GoogleTagManager from 'react-gtm-module'
 import { ENVIRONMENT } from '@/constants'
-import { usePathname, useSearchParams } from 'next/navigation'
 
 interface GTMContextValue {}
 
