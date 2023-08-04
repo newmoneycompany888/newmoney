@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { noto_sans_thai } from './fonts'
 
+import { GTMProvider } from '@/contexts'
 import { ENVIRONMENT } from '@/constants'
 
 import { App } from './App'
@@ -66,7 +67,9 @@ const RootLayout = ({ children }: IRootLayoutParams) => {
     <html lang="th" className={noto_sans_thai.variable}>
       <body>
         <div id="__next">
-          <App>{children}</App>
+          <GTMProvider>
+            <App>{children}</App>
+          </GTMProvider>
           <Toaster />
         </div>
       </body>

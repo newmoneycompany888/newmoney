@@ -10,6 +10,7 @@ export const ENVIRONMENT = {
     authPassword: process.env.EMAIL_AUTH_PASSWORD,
     recipients: process.env.EMAIL_RECIPIENTS,
   },
+  gtmId: process.env.GTM_ID,
 }
 
 export const CONTRACT_US = {
