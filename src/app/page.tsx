@@ -7,10 +7,11 @@ import { ENVIRONMENT } from '@/constants'
 
 const getBlogList = async (): Promise<Blog[]> => {
   const response = await fetch(`${ENVIRONMENT.baseUrl}/api/blog`, {
-    headers: {
+    headers: new Headers({
       'Content-Type': 'application/json',
       Accept: 'application/json',
-    },
+      'ngrok-skip-browser-warning': 'true',
+    }),
     next: { revalidate: 60 },
   })
 
