@@ -14,10 +14,11 @@ interface IBlogPageProps {
 
 const getBlogList = async (hiddenID: number): Promise<BlogModel[]> => {
   const response = await fetch(`${ENVIRONMENT.baseUrl}/api/blog?hiddenID=${hiddenID}`, {
-    headers: {
+    headers: new Headers({
       'Content-Type': 'application/json',
       Accept: 'application/json',
-    },
+      'ngrok-skip-browser-warning': 'true',
+    }),
     next: { revalidate: 60 },
   })
 
@@ -26,10 +27,11 @@ const getBlogList = async (hiddenID: number): Promise<BlogModel[]> => {
 
 const getBlogSlugList = async (): Promise<BlogModel[]> => {
   const response = await fetch(`${ENVIRONMENT.baseUrl}/api/blog?slugOnly=1`, {
-    headers: {
+    headers: new Headers({
       'Content-Type': 'application/json',
       Accept: 'application/json',
-    },
+      'ngrok-skip-browser-warning': 'true',
+    }),
     next: { revalidate: 60 },
   })
 
@@ -38,10 +40,11 @@ const getBlogSlugList = async (): Promise<BlogModel[]> => {
 
 const getBlogBySlug = async (slug: string): Promise<BlogModel | null> => {
   const response = await fetch(`${ENVIRONMENT.baseUrl}/api/blog/slug/${slug}`, {
-    headers: {
+    headers: new Headers({
       'Content-Type': 'application/json',
       Accept: 'application/json',
-    },
+      'ngrok-skip-browser-warning': 'true',
+    }),
     next: { revalidate: 60 },
   })
 
@@ -91,7 +94,7 @@ export const generateMetadata = async ({ params }: IBlogPageProps, parent: Resol
 export const generateStaticParams = async () => {
   const blogs = await getBlogSlugList()
 
-  return blogs
+  return blogs || []
 }
 
 const BlogPage = async ({ params }: IBlogPageProps) => {

@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from 'next'
+import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { noto_sans_thai } from './fonts'
@@ -54,11 +54,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
       other: [{ rel: 'mask-icon', url: '/safari-pinned-tab.svg' }],
     },
     manifest: '/site.webmanifest',
+    themeColor: '#ffffff',
   }
-}
-
-export async function generateViewport(): Promise<Viewport> {
-  return { themeColor: '#ffffff' }
 }
 
 interface IRootLayoutParams {

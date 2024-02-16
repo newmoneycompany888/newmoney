@@ -171,7 +171,14 @@ export function App(props: PropsWithChildren<AppProps>) {
           </div>
           <Navbar fluid className="min-h-[3rem]">
             <Navbar.Brand href={ROUTES.HOME}>
-              <Image alt="New Money Logo" width={48} height={48} className="w-12 h-12 mr-2" src="/logo.jpg" />
+              <Image
+                alt="New Money Logo"
+                width={48}
+                height={48}
+                className="w-12 h-12 mr-2"
+                src="/logo.jpg"
+                loader={(load) => `${load.src}?w=${load.width}&q=${load.quality || 100}`}
+              />
               <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white block md:hidden lg:block">New Money</span>
             </Navbar.Brand>
             <div className="space-x-1">
@@ -230,7 +237,13 @@ export function App(props: PropsWithChildren<AppProps>) {
                       )
                     )}
                   </div>
-                  <Image src={'/images/M_273axokg_GW.png'} width={178} height={178} alt={'line qr code'} />
+                  <Image
+                    src={'/images/M_273axokg_GW.png'}
+                    width={178}
+                    height={178}
+                    alt={'line qr code'}
+                    loader={(load) => `${load.src}?w=${load.width}&q=${load.quality || 100}`}
+                  />
                 </article>
               </section>
               <section className="w-full border-t text-center mt-7.5 pt-1">
